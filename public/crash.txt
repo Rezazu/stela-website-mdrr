@@ -1,0 +1,100 @@
+date/time         : 2022-11-01, 14:26:35, 148ms
+computer name     : DESKTOP-2KLQHS8
+user name         : Asus
+registered owner  : Asus
+operating system  : Windows NT New x64 build 9200
+system language   : English
+system up time    : 7 days 3 hours
+program up time   : 1 second
+processors        : 8x Intel(R) Core(TM) i5-10300H CPU @ 2.50GHz
+physical memory   : 7855/16171 MB (free/total)
+free disk space   : (C:) 29,37 GB (D:) 170,11 GB
+display mode      : 1536x864, 32 bit
+process id        : $171c
+allocated memory  : 22,15 MB
+command line      : "D:\xampp\sendmail\sendmail.exe" -t
+executable        : sendmail.exe
+exec. date/time   : 2012-04-17 00:30
+compiled with     : Delphi 2006/07
+madExcept version : 3.0l
+callstack crc     : $297aecaf, $497d8037, $497d8037
+exception number  : 1
+exception class   : EIdConnClosedGracefully
+exception message : Connection Closed Gracefully.
+
+main thread ($440):
+0043e503 +002f sendmail.exe IdIOHandler                   1929  +23 TIdIOHandler.RaiseConnClosedGracefully
+00440d55 +0051 sendmail.exe IdIOHandlerStack               396  +17 TIdIOHandlerStack.CheckForDisconnect
+0043dada +01fe sendmail.exe IdIOHandler                   1508  +60 TIdIOHandler.ReadFromSource
+0043d559 +0159 sendmail.exe IdIOHandler                   1315  +57 TIdIOHandler.ReadLn
+0043d380 +0024 sendmail.exe IdIOHandler                   1233   +1 TIdIOHandler.ReadLn
+0043d837 +0073 sendmail.exe IdIOHandler                   1428  +10 TIdIOHandler.ReadLnWait
+0044035d +0059 sendmail.exe IdTCPConnection                768   +7 TIdTCPConnection.GetInternalResponse
+0043fea3 +0013 sendmail.exe IdTCPConnection                564   +1 TIdTCPConnection.GetResponse
+0043ff87 +005b sendmail.exe IdTCPConnection                585   +4 TIdTCPConnection.SendCmd
+0044020e +0056 sendmail.exe IdTCPConnection                723   +4 TIdTCPConnection.SendCmd
+0045ac17 +0017 sendmail.exe IdSMTP                         394   +2 TIdSMTP.DisconnectNotifyPeer
+0043fe12 +002a sendmail.exe IdTCPConnection                519   +5 TIdTCPConnection.Disconnect
+0045aea0 +0018 sendmail.exe IdSMTP                         509   +2 TIdSMTP.Disconnect
+00440598 +0004 sendmail.exe IdTCPConnection                857   +0 TIdTCPConnection.Disconnect
+00445fe3 +0023 sendmail.exe IdExplicitTLSClientServerBase  398   +2 TIdExplicitTLSClient.TLSHandShakeFailed
+00445d52 +002a sendmail.exe IdExplicitTLSClientServerBase  283   +6 TIdExplicitTLSClient.DoOnTLSHandShakeFailed
+00445e03 +000f sendmail.exe IdExplicitTLSClientServerBase  326   +3 TIdExplicitTLSClient.ProcessTLSHandShakeFailed
+00445faf +005b sendmail.exe IdExplicitTLSClientServerBase  391   +6 TIdExplicitTLSClient.TLSHandshake
+77bd5001 +0021 ntdll.dll                                            KiUserExceptionDispatcher
+0040474d +001d sendmail.exe System                         262   +0 @AfterConstruction
+00464a46 +00a6 sendmail.exe IdSSLOpenSSL                  1634  +16 SslLockingCallback
+11049f3e +006e libeay32.dll                                         ERR_get_state
+11049290 +0000 libeay32.dll                                         ERR_peek_error
+00465681 +0041 sendmail.exe IdSSLOpenSSL                  2131   +5 TIdSSLIOHandlerSocketOpenSSL.SetPassThrough
+00445f97 +0043 sendmail.exe IdExplicitTLSClientServerBase  388   +3 TIdExplicitTLSClient.TLSHandshake
+00459fc1 +0075 sendmail.exe IdSMTPBase                     395  +12 TIdSMTPBase.StartTLS
+0045a8bd +0039 sendmail.exe IdSMTP                         312  +11 TIdSMTP.Authenticate
+004b5f81 +10cd sendmail.exe sendmail                       822 +340 initialization
+76aefa27 +0017 KERNEL32.DLL                                         BaseThreadInitThunk
+
+thread $4024:
+76aefa27 +17 KERNEL32.DLL  BaseThreadInitThunk
+
+thread $14e8:
+76aefa27 +17 KERNEL32.DLL  BaseThreadInitThunk
+
+thread $21d0:
+76aefa27 +17 KERNEL32.DLL  BaseThreadInitThunk
+
+stack dump:
+0019f138  08 e5 43 00 de fa ed 0e - 01 00 00 00 07 00 00 00  ..C.............
+0019f148  4c f1 19 00 08 e5 43 00 - a0 50 4e 02 01 00 00 00  L.....C..PN.....
+0019f158  e0 67 48 02 94 34 46 00 - 78 f1 19 00 68 f1 19 00  .gH..4F.x...h...
+0019f168  90 f1 19 00 c8 4b 40 00 - 78 f1 19 00 00 00 00 00  .....K@.x.......
+0019f178  c8 f1 19 00 5a 0d 44 00 - 00 00 00 00 94 34 46 00  ....Z.D......4F.
+0019f188  94 34 46 00 dd da 43 00 - d4 f1 19 00 c8 4b 40 00  .4F...C......K@.
+0019f198  c8 f1 19 00 ff ff ff ff - e0 67 48 02 00 00 00 00  .........gH.....
+0019f1a8  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0019f1b8  fe ff ff ff 00 00 00 01 - e0 67 48 02 00 00 00 00  .........gH.....
+0019f1c8  08 f2 19 00 5e d5 43 00 - 01 00 00 00 38 f2 19 00  ....^.C.....8...
+0019f1d8  c8 4b 40 00 08 f2 19 00 - a4 f2 19 00 c0 aa 4f 02  .K@...........O.
+0019f1e8  94 34 46 00 00 00 00 00 - cf a6 b6 24 00 00 00 00  .4F........$....
+0019f1f8  ff ff ff ff 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0019f208  2c f2 19 00 86 d3 43 00 - 58 f2 19 00 e0 aa 4f 02  ,.....C.X.....O.
+0019f218  c0 aa 4f 02 00 40 00 00 - e0 67 48 02 00 00 00 00  ..O..@...gH.....
+0019f228  e0 aa 4f 02 6c f2 19 00 - 3c d8 43 00 58 f2 19 00  ..O.l...<.C.X...
+0019f238  7c f2 19 00 c8 4b 40 00 - 6c f2 19 00 94 34 46 00  |....K@.l....4F.
+0019f248  00 00 00 00 80 66 48 02 - 00 00 00 00 00 00 00 00  .....fH.........
+0019f258  00 00 00 00 00 00 00 00 - 00 00 00 00 c0 aa 4f 02  ..............O.
+0019f268  ff ff ff 7f a8 f2 19 00 - 63 03 44 00 a4 f2 19 00  ........c.D.....
+
+disassembling:
+[...]
+0043e4ef        call    -$36f9c ($407558)      ; System.LoadResString
+0043e4f4        mov     ecx, [ebp-4]
+0043e4f7        mov     dl, 1
+0043e4f9        mov     eax, [$41f6b4]
+0043e4fe        call    -$1eb07 ($41f9fc)      ; IdException.EIdException.Create
+0043e503      > call    -$3981c ($404cec)      ; System.@RaiseExcept
+0043e508 1930   xor     eax, eax
+0043e50a        pop     edx
+0043e50b        pop     ecx
+0043e50c        pop     ecx
+0043e50d        mov     fs:[eax], edx
+[...]

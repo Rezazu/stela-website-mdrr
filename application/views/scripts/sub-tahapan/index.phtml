@@ -1,0 +1,63 @@
+<html>
+    <head>
+    <title>Coba</title>
+    </head>
+    <body>
+        <?php
+
+        if(!isset($this->error))
+        {
+            foreach($this->resultSubTahapan[0] as $key => $value){
+                echo $key . "\t";
+            }
+    
+            echo "<br>";
+            echo "<br>";
+    
+            foreach($this->resultSubTahapan as $row)
+            {
+                foreach($row as $key => $value)
+                {
+                    echo $key . " => " . $value . ", ";
+                    if($key == "id"){
+                        $id = $value;
+                    }
+                    if($key == "status"){
+                        if($this->resultTodoList[$id] != null){
+                            echo "<br>";
+                            foreach($this->resultTodoList[$id] as $row)
+                            {
+                                foreach($row as $key => $value)
+                                {
+                                    echo $key . " => " . $value . ", ";
+                                    if($key == 'id'){
+                                        $id = $value;
+                                    }
+                                    if($key == 'status_kerja'){
+                                        if($this->resultTodoListDokumen[$id] != null){
+                                            echo "<br>";
+                                            foreach($this->resultTodoListDokumen[$id] as $row)
+                                            {
+                                                foreach($row as $key => $value)
+                                                {
+                                                    echo $key . " => " . $value . ", ";
+                                                }
+                                                echo "<br>";
+                                            }
+                                        }
+                                    }
+                                }
+                                echo "<br>";
+                            }                            
+                        }
+                    }
+                }
+                echo "<br>";
+                
+            }
+        }else{
+            echo $this->error;
+        }        
+        ?>
+    </body>
+</html>

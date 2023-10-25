@@ -1,0 +1,552 @@
+    <style>
+      .flex-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+
+      .social-links {
+        display: flex;
+      }
+
+      .social-btn {
+        cursor: pointer;
+        height: 50px;
+        width: 50px;
+        font-family: "Titillium Web", sans-serif;
+        color: #333;
+        border-radius: 10px;
+        box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+        background: white;
+        margin: 5px;
+        transition: 1s;
+      }
+
+      .social-btn span {
+        width: 0px;
+        overflow: hidden;
+        transition: 1s;
+        text-align: center;
+      }
+
+      .social-btn:hover {
+        width: 150px;
+        border-radius: 5px;
+      }
+
+      .social-btn:hover span {
+        padding: 2px;
+        width: max-content;
+      }
+    </style>
+    <div class="">
+      <div class="col-lg-12 col-xxl-12">
+        <div class="card shadow " style="border-radius: 15px;">
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <p class="text-primary m-0 fw-bold" style="padding-bottom: 10px;">Kode Tiket : <?= $this->data['no_tiket'] ?></p>
+              </div>
+              <div class="col-md-6 col-sm-12 text-end">
+                <p class="text-primary m-0 fw-bold" style="padding-bottom: 10px;">Jam : <?= $this->data['jam'] ?>&nbsp;| Tanggal : <?= $this->data['tanggal'] ?> </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 col-sm-12">
+                <div class="mb-3"><label class="form-label"><strong>Via</strong><br /></label><input id="email" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['via'] ?>" disabled /></div>
+              </div>
+              <div class="col-md-2 col-sm-12">
+                <div class="mb-3"><label class="form-label"><strong>Kategori</strong><br /></label><input id="email" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['sub_kategori'] ?>" disabled /></div>
+              </div>
+              <div class="col-md-2 col-sm-12">
+                <div class="mb-3"><label class="form-label"><strong>Urgensi</strong><br /></label><input id="email" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['urgensi'] ?>" disabled /></div>
+              </div>
+              <div class="col-md-2 col-sm-12">
+                <div class="mb-3"><label class="form-label"><strong>Status</strong><br /></label><input id="email" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['status_tiket_internal'] ?>" disabled /></div>
+              </div>
+              <div class="col-md-4 col-sm-12">
+
+                <? if ($this->data['petugas_aktif'] != null) { ?>
+                  <div class="mb-3"><label class="form-label"><strong>Petugas</strong></label><br />
+                    <!-- <textarea class='form-control' rows='2' name='signature' style='border-radius: 15px;' value='' disabled> -->
+                    <?php foreach ($this->data['petugas_aktif'] as $petugas) {
+                      echo  $petugas['nama'] . " (" . $petugas['peran'] . ")";
+                      echo "<br>";
+                    } ?>
+                    <!-- </textarea> -->
+                  <? } ?>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="">
+        <div class="col-lg-12 col-xxl-12">
+
+          <div class="card shadow " style="border-radius: 15px;">
+            <div class="card-body">
+              <!-- <div>
+                        <p class="text-primary m-0 fw-bold" style="padding-bottom: 10px;">Keterangan :</p>
+                    </div> -->
+              <form>
+                <div class="row">
+                  <div class="col-md-4 col-sm-12">
+                    <div class="mb-3"><label class="form-label"><strong>Pelapor</strong><br /></label><input id="pelapor" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['nama_pelapor'] ?>" disabled /></div>
+                    <div class="mb-3"><label class="form-label"><strong>Unit Kerja</strong><br /></label><input id="Unit Kerja" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['unit_kerja'] ?>" disabled /></div>
+                    <div class="mb-3"><label class="form-label"><strong>HP</strong><br /></label><input id="hp" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['hp'] ?>" disabled /></div>
+                    <div class="mb-3"><label class="form-label"><strong>Email</strong><br /></label><input id="email" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['email_pelapor'] ?>" disabled /></div>
+                  </div>
+                  <div class="col">
+                    <div class="row">
+                      <div class="col">
+                        <div class="mb-3"><label class="form-label"><strong>Keterangan</strong><br /></label><textarea id="keterangan" class="form-control" rows="" name="signature" value="" style="border-radius: 15px; height: 126px;" disabled><?= $this->data['keterangan'] ?></textarea></div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="mb-3"><label class="form-label"><strong>Bagian</strong><br /></label><input id="bagian" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['bagian_pelapor'] ?>" disabled /></div>
+                      </div>
+                      <div class="col">
+                        <div class="mb-3"><label class="form-label"><strong>Gedung</strong></label><input id="gedung" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['gedung'] ?>" disabled /></div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="mb-3"><label class="form-label"><strong>Lantai</strong></label><input id="lantai" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['lantai'] ?>" disabled /></div>
+                      </div>
+                      <div class="col">
+                        <div class="mb-3"><label class="form-label"><strong>Ruangan</strong></label><input id="ruangan" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['ruangan'] ?>" disabled /></div>
+                      </div>
+                    </div>
+                    <!-- <div class="row">
+                                <div class="col">
+                                <div class="mb-3"><label class="form-label"><strong>Kategori</strong></label><input id="ruangan" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['urgensi'] ?>" disabled /></div>
+                                </div>
+                                <div class="col">
+                                <div class="mb-3"><label class="form-label"><strong>Status</strong></label><input id="ruangan" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['status_tiket_internal'] ?>" disabled /></div>
+                                </div>
+                              </div> -->
+
+
+                    <div class="mb-3">
+                      <? if ($this->data['dokumen_lampiran'] != null) { ?>
+                        <label class="form-label"><strong>Dokumen Lampiran</strong></label><br>
+                        <? foreach ($this->data['dokumen_lampiran'] as $data) { ?>
+                          <a href="/storage/index/dokumen-lampiran/<?= $data['doc_name'] . '/ext/' . $data['ext'] ?>" target="_blank"><i class="fa-regular fa-file" style="font-size: 40px;"></i></a>
+                      <? }
+                      } ?>
+                    </div>
+                  </div>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- button tindakan -->
+      <div class="row">
+        <div class="col d-flex justify-content-center flex">
+          <a class='social-btn flex-center' data-toggle="modal" data-target="#modal-kategori" id="button-kategori" style="background-color:#429bd6;">
+            <i class="fas fa-boxes"></i><span>Kategori</span>
+          </a>
+          <!-- <form method="post" action="/servicedesk/update-selesai/">
+            <input type="hidden" name="id" value="<?= $this->data['id'] ?>">
+            <button type="submit" class='btn social-btn flex-center' id="button-finish" style="background-color:#eb8e8e;">
+              <i class="far fa-flag"></i><span>Finish</span>
+            </button>
+          </form> -->
+          <div class='social-btn flex-center' data-toggle="modal" data-target="#modal-finish" id="button-finish" style="background-color:#eb8e8e;">
+            <i class="far fa-flag"></i><span>Finish</span>
+          </div>
+          <div class='social-btn flex-center' data-toggle="modal" data-target="#modal-solusi" id="button-solusi" style="background-color:#ebc95d;">
+            <i class="far fa-lightbulb"></i><span>Solusi</span>
+          </div>
+          <a class='social-btn flex-center' href="/servicedesk/permintaan/log/<?= $this->data['id'] ?>" id="button-log" style="background-color:#717ce6;">
+            <i class="fas fa-window-restore"></i><span>Log</span>
+          </a>
+          <div class='social-btn flex-center' data-toggle="modal" data-target="#modal-status" id="button-status" style="background-color:#5fd393;">
+            <i class="fas fa-list-ol"></i><span>Ubah Status</span>
+          </div>
+          <div class='social-btn flex-center' data-toggle="modal" data-target="#modal-eskalasi" id="button-eskalasi" style="background-color:#c461bb;">
+            <i class="fa-solid fa-user-plus"></i><span>Eskalasi</span>
+          </div>
+          <a class='social-btn flex-center' href="/servicedesk/permintaan/revisi/<?= $this->data['id'] ?>" id="button-revisi" style="background-color:#717ce6;">
+            <i class="fas fa-star"></i><span>Revisi</span>
+          </a>
+
+        </div>
+      </div>
+      <!-- close Button Tindakan -->
+
+
+      <!-- MOdal solusi  -->
+      <div class="modal fade" id="modal-solusi">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Solusi</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class="need-validation form-group solusi" method="post" action="/servicedesk/update-solusi/" enctype="multipart/form-data" novalidate>
+                <input type="hidden" name="id" value="<?= $this->data['id'] ?>">
+                <div class="mb-3"><label>Permasalahan Akhir</label><input id="" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['laporan_petugas']['0']['solusi'] ?>" name="permasalahan_akhir" required />
+                  <div class="invalid-feedback">
+                    Bagian Ini Tidak Boleh Kosong!
+                  </div>
+                  <div class="valid-feedback">
+                    Baik!
+                  </div>
+                </div>
+                <div class="mb-3"><label>Solusi</label><textarea class="form-control" id="alamat" rows="4" value="<?= $this->data['solusi'] ?>" name="solusi" required><?= $this->data['laporan_petugas']['0']['solusi'] ?></textarea>
+                  <div class="invalid-feedback">
+                    Bagian Ini Tidak Boleh Kosong!
+                  </div>
+                  <div class="valid-feedback">
+                    Baik!
+                  </div>
+                </div>
+                <div class="mb-3"><label for="formFile" class="form-label">Lampirkan Dokumen</label>
+                  <input class="form-control" multiple="multiple" name="dokumen[]" type="file" id="formFile">
+                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+              <button id="" type="submit" class="btn btn-primary">Simpan</button>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- End Modal Solusi -->
+      <!-- MOdal finish  -->
+      <div class="modal fade" id="modal-finish">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">finish</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class="need-validation finsih form-group" method="post" action="/servicedesk/update-selesai/" enctype="multipart/form-data" novalidate>
+                <input type="hidden" name="id" value="<?= $this->data['id'] ?>">
+                <div class="mb-3"><label>Permasalahan Akhir</label><input id="" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['laporan_petugas'][0]['permasalahan_akhir'] ?>" name="permasalahan_akhir" required />
+                  <div class="invalid-feedback">
+                    Bagian Ini Tidak Boleh Kosong!
+                  </div>
+                  <div class="valid-feedback">
+                    Baik!
+                  </div>
+                </div>
+                <div class="mb-3"><label>Solusi</label><textarea class="form-control" id="alamat" rows="4" value="<?= $this->data['laporan_petugas'][0]['solusi'] ?>" name="solusi"  required><?= $this->data['laporan_petugas'][0]['solusi'] ?></textarea>
+                  <div class="invalid-feedback">
+                    Bagian Ini Tidak Boleh Kosong!
+                  </div>
+                  <div class="valid-feedback">
+                    Baik!
+                  </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+              <button id="" type="submit" class="btn btn-primary">Simpan</button>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- End Modal finish -->
+
+      <!-- MOdal Kategori  -->
+      <div class="modal fade" id="modal-kategori">
+        <div class="modal-dialog modal-dialog-centered" id="updateKategori">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Kategori</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class="need-validation form-group" method="post" action="/servicedesk/update-kategori/" novalidate>
+                <input type="hidden" name="id" value="<?= $this->data['id'] ?>">
+                <div>
+                  <label for="id_sub_kategori">Kategori</label>
+                  <select class="required form-control select2" id="id_sub_kategori" name="id_sub_kategori" style="width: 100%;" required>
+                    <option value=""> Pilih Kategori...</option>
+                    <?php
+                    foreach ($this->data['list_sub_kategori'] as $data) {
+                      echo '<option value="' . $data['id'] . '">' . $data['sub_kategori'] . '</option>';
+                    }
+                    ?>
+                  </select>
+                  <div class="invalid-feedback">
+                    Bagian Ini Tidak Boleh Kosong!
+                  </div>
+                  <div class="valid-feedback">
+                    Baik!
+                  </div>
+                </div>
+                <div>
+                  <label for="id_urgensi">Urgensi</label>
+                  <select class="required form-control select2" id="id_urgensi" name="id_urgensi" style="width: 100%;" required>
+                    <option value=""> Pilih Kategori...</option>
+                    <?php
+                    foreach ($this->data['list_urgensi'] as $data) {
+                      echo '<option value="' . $data['id'] . '">' . $data['urgensi'] . '</option>';
+                    }
+                    ?>
+                  </select>
+                  <div class="invalid-feedback">
+                    Bagian Ini Tidak Boleh Kosong!
+                  </div>
+                  <div class="valid-feedback">
+                    Baik!
+                  </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                  <button id="" type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Modal kategori -->
+      <!-- MOdal status  -->
+      <div class="modal fade" id="modal-status">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Status Terkini</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class="need-validation form-group" method="post" action="/servicedesk/update-status/id/<?= $this->data['id'] ?>" novalidate>
+                <input type="hidden" name="id" value="<?= $data['id'] ?>">
+                <div>
+                  <label for="id_sub_kategori">Status</label>
+                  <select class="required form-control select2" id="id_status" name="id_status" style="width: 100%;" required>
+                    <option value=""> Pilih Status...</option>
+                    <?php
+                    foreach ($this->data['list_status'] as $data) {
+                      echo '<option value="' . $data['id'] . '">' . $data['status'] . '</option>';
+                    }
+                    ?>
+                  </select>
+                  <div class="invalid-feedback">
+                    Bagian Ini Tidak Boleh Kosong!
+                  </div>
+                  <div class="valid-feedback">
+                    Baik!
+                  </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                  <button type="submit" class="btn btn-primary">Update Status</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Modal status -->
+      <!-- MOdal Eskalasi  -->
+      <div class="modal fade" id="modal-eskalasi">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Eskalasi</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class="need-validation form-group" method="post" action="/servicedesk/update-eskalasi/" onsubmit="return submitForm(this);" novalidate>
+                <!-- <textarea id="keterangan" class="form-control" rows="2" name="signature" style="border-radius: 5px;" value="" disabled>
+                  </textarea> -->
+                <? if ($this->data['petugas_aktif'] != null) { ?>
+                  <div class="mb-3"><label>Petugas Eskalasi Sebelumnya</label></div>
+                  <table id="" class="table table-striped" style="border-radius:15px;">
+                    <thead style="background: rgba(208,204,204,0.76);">
+                      <tr>
+                        <th>nama</th>
+                        <th>Peran</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php foreach ($this->data['petugas_aktif'] as $petugas) {
+                        echo "<tr>";
+                        echo "<td>" . $petugas['nama'] . "</td>";
+                        echo "<td>" . $petugas['peran'] . "</td>";
+                        echo "<tr>";
+                      } ?>
+                    </tbody>
+                  </table>
+                <? } ?>
+                <input type="hidden" name="id" value="<?= $this->data['id'] ?>">
+                <label>Beri Tugas</label>
+                <select class="select2" name="eskalasi[]" multiple="multiple" data-placeholder="Pilih Petugas" style="width: 100%;" required>
+                  <?php
+                  foreach ($this->data['list_eskalasi'] as $data) {
+                    echo '<option value="' . $data['id'] . '">' . $data['nama'] . " (" . $data['peran'] .  ')</option>';
+                    //if($data['id'] == $leaddetails[0]['city']){echo "selected";}
+                  }
+                  ?>
+                </select>
+                <div class="invalid-feedback">
+                  Bagian Ini Tidak Boleh Kosong!
+                </div>
+                <div class="valid-feedback">
+                  Baik!
+                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+              <button type="submit" class="btn btn-primary">Kirim</button>
+              <!-- <button type="button" class="btn btn-primary" href="#konfirmasiEskalasi" data-toggle="modal">Kirim</button> -->
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- End Modal Eskalasi -->
+      <div class="card shadow mx-2" style="border-bottom-right-radius: 15px;border-top-right-radius: 15px;border-top-left-radius: 15px;border-bottom-left-radius: 15px;">
+        <div class="card-header ">
+          <p class="text-primary m-0 fw-bold">Laporan Petugas</p>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive table mt-2" id="" role="grid" aria-describedby="dataTable_info" style="background: var(--bs-table-bg);border-radius: 10px;">
+            <table id="dataTable" class="table my-0">
+              <thead style="background: rgba(208,204,204,0.76);">
+                <tr>
+                  <th style="width:150px">Tanggal Input</th>
+                  <th>Petugas</th>
+                  <th>Permasalahan akhir</th>
+                  <th>Lampiran</th>
+                  <th>keterangan</th>
+                  <th>tipe laporan</th>
+                </tr>
+              </thead>
+              <tbody style="background: rgba(231,231,231,0.64);">
+                <?php
+                if (!$this->data['laporan_petugas']) {
+                  # code...
+                } else {
+                  foreach ($this->data['laporan_petugas'] as $data) {
+                    echo "<tr>";
+                    echo "<td>" . $data['tanggal_input'] . "</td>";
+                    echo "<td>" . $data['user_input'] . "</td>";
+                    echo "<td>" . $data['permasalahan_akhir'] . "</td>";
+                    // echo "<td>". $data['original_name'] . "</td>";
+                    //    if ($this->data['original_name'] != null){    
+                    //    foreach($this->data['original_name'] as $data){
+                    echo "<td>";
+                    if ($data['doc_name']) {
+                      echo "<a href='/storage/index/tiket-image-laporan/{$data['doc_name']}/ext/{$data['ext']}' target='_blank'>";
+                      echo "<i class='fa-regular fa-file' style='font-size: 40px;'>" . "</i>" . "</a>";
+                      echo "</td>";
+                    }
+                    //   }} 
+                    echo "<td>" . $data['solusi'] . "</td>";
+                    echo "<td>" . $data['tipe_laporan'] . "</td>";
+                    echo "</tr>";
+                  }
+                }
+                ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <?php
+      // /var_dump($this->data)
+      ?>
+      <script>
+        // function konfirmasiFunction() {
+        //   alert("Yakin Ingin Melanjutkan?");
+        // }
+        function submitForm() {
+          return confirm('Yakin ingin melanjutkan?');
+        }
+      </script>
+      <script>
+        function hideButtonKategori() {
+          kategori = document.getElementById('button-kategori');
+          kategori.style.display = 'none';
+        }
+
+        function hideButtonfinish() {
+          kategori = document.getElementById('button-finish');
+          kategori.style.display = 'none';
+        }
+
+        function hideButtonLog() {
+          kategori = document.getElementById('button-log');
+          kategori.style.display = 'none';
+        }
+
+        function hideButtonStatus() {
+          kategori = document.getElementById('button-status');
+          kategori.style.display = 'none';
+        }
+
+        function hideButtonSolusi() {
+          kategori = document.getElementById('button-solusi');
+          kategori.style.display = 'none';
+        }
+
+        function hideButtonEskalasi() {
+          kategori = document.getElementById('button-eskalasi');
+          kategori.style.display = 'none';
+        }
+
+        function hideButtonRevisi() {
+          kategori = document.getElementById('button-revisi');
+          kategori.style.display = 'none';
+        }
+        let status = "<?= $this->data['id_status_tiket_internal'] ?>";
+        if (status == 7) {
+          hideButtonfinish();
+          hideButtonLog();
+          hideButtonStatus();
+          hideButtonEskalasi();
+          hideButtonSolusi();
+          hideButtonRevisi();
+        }
+        if (status == 9) {
+          hideButtonKategori();
+          //hideButtonLog();
+          //hideButtonStatus();
+          hideButtonEskalasi();
+          hideButtonSolusi();
+          hideButtonRevisi();
+        }
+        if (status == 6) {
+          hideButtonfinish();
+          //hideButtonLog();
+          hideButtonStatus();
+          hideButtonEskalasi();
+          hideButtonSolusi();
+          hideButtonKategori();
+        }
+        if (status != 6 && status != 7 && status != 9) {
+          hideButtonKategori();
+          hideButtonfinish();
+          hideButtonRevisi();
+        }
+      </script>

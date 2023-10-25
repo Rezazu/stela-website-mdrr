@@ -1,0 +1,406 @@
+<!-- <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> -->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title><?= $this->title ?></title>
+    <link rel="icon" href="/stela/assets/logostelatitle.png" type="image/x-icon">
+    <link rel="stylesheet" href="/stela/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stela/css/all.min.css">
+    <link rel="stylesheet" href="/stela/css/layout.css">
+    <link rel="stylesheet" href="/stela/css/status.css">
+    <link rel="stylesheet" href="/stela/css/swiper-bundle.css">
+    <link rel="stylesheet" href="/stela/css/progres-bar.css">
+    <link rel='stylesheet' href="/stela/css/jquery-ui.css">
+    <link rel='stylesheet' href="/stela/css/rating.css">
+    <link rel="stylesheet" href="/stela/css/select2.min.css">
+    <style>
+        .k-mati {
+            pointer-events: none;
+            filter: grayscale(1);
+        }
+    </style>
+
+    <?
+    $peran = Zend_Auth::getInstance()->getIdentity()->peran;
+    $username = Zend_Auth::getInstance()->getIdentity()->nama;
+    // get 3 notif user session
+    $notif = null;
+    if (Zend_Auth::getInstance()->hasIdentity())
+        $notif = (new Dpr_NotifikasiService)->getDataWithLimit(Zend_Auth::getInstance()->getIdentity()->id, 3);
+    ?>
+</head>
+
+<body class="row" style="background: rgb(108, 203, 231);">
+    <!--Navbar-->
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top portfolio-navbar nav-gradient">
+        <div class="container">
+            <img src="/stela/assets/logostela.png" width="144" height="64" style="margin-top: -33px;margin-bottom: -24px;margin-left: -5%;">
+            <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav">
+                <span class="visually-hidden">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav" style="width: 1136px;">
+                <ul class="navbar-nav ms-auto" style="margin-right: -30px;">
+                    <?
+                    if ($this->beranda) {
+                        if (Zend_Auth::getInstance()->getIdentity()->peran != null && $this->peran_aktif != 'user' && $this->peran_aktif != 'viewer') { ?>
+                            <label class="form-check-label nav-link" for="flexSwitchCheckDefault"><?= ($this->status) ? 'Status Aktif' : 'Status Nonaktif' ?></label>
+                            <li class="nav-item">
+                                <div class="form-check form-switch">
+                                    <?= (!$this->status) ?
+                                        '<input class="form-check-input aktifchange" id="aktifchange" type="checkbox" id="flexSwitchCheckDefault" value="' . $this->status . '" style="width:60px;height:35px;">'
+                                        :
+                                        '<input class="form-check-input aktifchange" id="aktifchange" type="checkbox" id="flexSwitchCheckDefault" value="' . $this->status . '" style="width:60px;height:35px;" checked>'
+                                    ?>
+                                </div>
+                            </li>
+
+                    <? }
+                    } ?>
+                    <?php
+                    if ($this->peran_aktif == 'servicedesk') {
+                        echo "<li class='nav-item'><a class='nav-link' href='/servicedesk/'>Service Desk</a></li>";
+                    }
+                    if ($this->peran_aktif == 'helpdesk') {
+                        echo "<li class='nav-item'><a class='nav-link' href='/helpdesk/'>Helpdesk</a></li>";
+                    }
+                    if ($this->peran_aktif == 'IT specialist') {
+                        echo "<li class='nav-item'><a class='nav-link' href='/helpdesk/'>IT specialist</a></li>";
+                    }
+                    if ($this->peran_aktif == 'viewer') {
+                        echo "<li class='nav-item'><a class='nav-link' href='/viewer/'>Viewer</a></li>";
+                    }
+                    if ($this->peran_aktif == 'programmer') {
+                        echo "<li class='nav-item'><a class='nav-link' href='/programmer/'>Programmer</a></li>";
+                    }
+                    if ($this->peran_aktif == 'verificator') {
+                        echo "<li class='nav-item'><a class='nav-link' href='/operator/'>Verificator</a></li>";
+                    }
+                    if ($this->peran_aktif == 'admin') {
+                        echo "<li class='nav-item'><a class='nav-link' href='/admin/'>Admin</a></li>";
+                    }
+                    ?>
+                    <li class="nav-item"><a class="nav-link" href="/beranda">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/tiket">Buat Tiket</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/riwayat">Riwayat</a></li>
+                    <li class="nav-item dropdown no-arrow mx-1" style="padding-right: 0px;">
+                        <div class="nav-item dropdown no-arrow">
+                            <a aria-expanded="false" data-bs-toggle="dropdown" class="nav-link" href="#">
+                                <span class="badge bg-danger border rounded badge-counter">Alert</span>
+                                <i class="fas fa-bell fa-fw"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
+                                <h6 class="dropdown-header">alerts center</h6>
+                                <?php if ($notif) : foreach ($notif as $v) : ?>
+                                        <?php if (!$v->dibaca) : ?>
+                                            <a class="dropdown-item d-flex align-items-center" href="/notifikasi/read-notifikasi/id_notif/<?= $v->id ?>/nomor_tiket/<?= $v->no_tiket ?>">
+                                            <?php else : ?>
+                                                <a class="dropdown-item d-flex align-items-center" style="background: rgb(220 230 233 / 42%);" href="/notifikasi/read-notifikasi/id_notif/<?= $v->id ?>/nomor_tiket/<?= $v->no_tiket ?>">
+                                                <?php endif ?>
+                                                <div class="me-3">
+                                                    <div class="bg-primary icon-circle"><i class="fas fa-file-alt text-white"></i>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <span class="small text-gray-500"><?= $v->tanggal ?></span>
+                                                    <p><?= $v->no_tiket ?> - <?= $v->keterangan ?></p>
+                                                </div>
+                                                </a>
+                                            <?php endforeach;
+                                    else : ?>
+                                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                                no data
+                                                <a>
+                                                <?php endif ?>
+                                                <a class="dropdown-item text-center small text-gray-500" href="/notifikasi/">Show All Alerts</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown no-arrow" style="padding-right: 0px;">
+                        <div class="nav-item dropdown no-arrow" style="padding-right: 0px;">
+                            <a class="img-profile-border" aria-expanded="false" data-bs-toggle="dropdown" class="nav-link" href="#" style="padding-right: 0px;">
+                                <img class="border rounded-circle img-profile" src="<?= (Zend_Auth::getInstance()->getIdentity()->profile) ? Zend_Auth::getInstance()->getIdentity()->profile : "/stela/assets/profile/avatar1.jpeg" ?>" width="60" height="60" style="margin: -10px;">
+                            </a>
+                            <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
+                                <? if (Zend_Auth::getInstance()->getIdentity()->nama_lengkap != null) { ?>
+                                    <a class="dropdown-item" style="pointer-events: none;">
+                                        <i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;<?= Zend_Auth::getInstance()->getIdentity()->nama_lengkap ?>
+                                    </a>
+                                    <? if ($this->peran_aktif) { ?>
+                                        <? if ($this->peran_aktif != 'user') { ?>
+                                            <!-- <a class="dropdown-item" style="pointer-events: none;">
+                                                <i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;
+                                                <?= $this->peran_aktif ?>
+                                            </a>    -->
+                                        <? } ?>
+                                    <? } ?>
+                                <? } ?>
+                                <? if (Zend_Auth::getInstance()->getIdentity()->nama_lengkap == null) { ?>
+                                    <a class="dropdown-item" href="/login">
+                                        <i class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;login
+                                    </a>
+                                <? } ?>
+                                <?php if ($this->list_peran) { ?>
+                                    <?php if ($this->peran_aktif != 'user') { ?>
+                                        <select id="rolechange" class="rolechange form-select " aria-label="Default select example" style="width: 100%;">
+                                            <!-- <option value="">Ganti Peran <?= $this->peran_aktif ?></option> -->
+                                            <?php
+                                            echo '<option disabled selected value>Tentukan Pilihan -- </option>';
+                                            foreach ($this->list_peran as $key => $value) {
+                                                echo '<option value="' . $key . '"' . (($this->peran_aktif == $value) ? 'selected' : '') . '>' . $value . '</option>';
+                                            }
+                                            ?>
+                                        </select>
+                                    <?php } ?>
+                                <?php } ?>
+                                <? if (Zend_Auth::getInstance()->getIdentity()->nama_lengkap != null) { ?>
+                                    <!-- <div class="dropdown-divider"></div> -->
+                                    <a class="dropdown-item" href="/logout">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout
+                                    </a>
+                                <? } ?>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- untuk ngasih jarak atas supaya tidak tertutup navbar -->
+    <section class="position-relative py-4"></section>
+    <!--Isi-->
+
+    <div class="main-menu p-0 col-md-12 mt-5 mb-3">
+        <div class="position-fixed buttom-0 end-0 p-3" style="z-index: 11">
+            <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false" style="background: #e9ecef;">
+                <div class="toast-header">
+                    <!-- <img src="..." class="rounded me-2" alt="..."> -->
+                    <strong class="me-auto"><span id="keterangan"></span></strong>
+                    <small><span id="no_tiket"></span></small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    <a id="directions-link" class="directions-link" href="/notifikasi/read-notifikasi/id_notif/">Lihat Tiket Anda</a>
+                </div>
+            </div>
+        </div>
+        <?= $this->layout()->content; ?>
+    </div>
+
+    <!-- <div class="inner-header"></div> -->
+
+
+    <!--Footer-->
+    <!--Waves Container-->
+    <div class="footer col-md-12 row justify-content-end align-items-end" style="z-index:1 ">
+        <div class="overflow-hidden">
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" overflow="hidden" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                    <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="parallax">
+                    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                    <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+                </g>
+            </svg>
+            <div class="content flex">
+                <p>2022 Sekretariat Jenderal DPR RI</p>
+            </div>
+        </div>
+        <!--Content starts-->
+        <!--Content ends-->
+    </div>
+    <!--Waves end-->
+
+    <!--Header ends-->
+
+    <script src="/stela/js/jquery.min.js"></script>
+    <script src="/stela/js/jquery-ui.min.js"></script>
+    <script src="/stela/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/stela/js/sweetalert2.all.min.js"></script>
+
+    <script src="/stela/js/jquery-3.6.0.min.js"></script>
+    <script src="/stela/js/status.js"></script>
+    <script src="/stela/js/swiper-bundle.min.js"></script>
+    <script src="/stela/js/progres-bar.js"></script>
+    <script src="/stela/js/script.js"></script>
+    <script src="/stela/js/jquery-ui.min.js"></script>
+    <!-- invalid form -->
+    <script>
+        function myFunction() {
+            const invalidForm = document.querySelector('form:invalid');
+            const submitBtn = document.getElementById('submit');
+            //console.log(invalidForm)
+            if(invalidForm){
+                submitBtn.disabled = false;
+            }else {
+                submitBtn.setAttribute('disabled', true);
+            }
+        }
+    </script>
+    <!-- ganti role -->
+    <script>
+        $(document).ready(function() {
+            $("#rolechange").on('change', function() {
+                // alert($('#rolechange').val());
+                $.ajax({
+                    url: '/beranda/switch-role',
+                    type: 'POST',
+                    data: {
+                        index_peran: $('#rolechange').val()
+                    },
+                    success: function(response) {
+                        if (response.success === true) {
+                            alert(response.message);
+                            window.location.reload();
+                        } else {
+                            alert(response.message);
+                        }
+                    },
+                    error: function() {
+                        alert("error");
+                    }
+                });
+            });
+        });
+    </script>
+    <!-- ganti aktif -->
+    <script>
+        $(document).ready(function() {
+            $("#aktifchange").on('change', function() {
+                // alert($('#aktifchange').val());
+                $.ajax({
+                    url: '/pengguna/toggle-status',
+                    type: 'POST',
+                    data: {
+                        status: $('#aktifchange').val()
+                    },
+                    success: function(response) {
+                        if (response.success === true) {
+                            alert(response.message);
+                            window.location.reload();
+                        } else {
+                            alert(response.message);
+                        }
+                    },
+                    error: function() {
+                        alert("error");
+                    }
+                });
+            });
+        });
+    </script>
+    <!-- notif -->
+    <script>
+        var audio = new Audio("/stela/assets/notif.mp3");
+
+        function playAudio() {
+            audio.autoplay = true;
+            audio.load();
+        }
+        var oldDatas = null;
+
+        function loadDoc() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    const datas = JSON.parse(this.response);
+
+                    if (!oldDatas) {
+                        oldDatas = datas;
+                    } else {
+                        datas.map(e => {
+                            let isSame = false;
+                            oldDatas.map(v => {
+                                if (e.id == v.id) isSame = true;
+                            })
+                            if (!isSame) {
+                                playAudio();
+                                notif();
+                                $("a.directions-link").attr("href", $("a.directions-link").attr("href") + e.id + '/nomor_tiket/' + e.no_tiket);
+                                $("#no_tiket").text(e.no_tiket);
+                                $("#keterangan").text(e.keterangan);
+                            }
+                        })
+                        oldDatas = datas;
+                    }
+                }
+            };
+            xhttp.open("GET", "/notifikasi/ajax", true);
+            xhttp.send();
+
+        }
+        //loadDoc();
+        setInterval(loadDoc, 1000);
+    </script>
+    <!-- bintang -->
+    <script>
+        $(function() {
+            $('.stars').stars();
+        });
+        $.fn.stars = function() {
+            return $(this).each(function() {
+                const rating = $(this).data("rating");
+                const numStars = $(this).data("numStars");
+                const fullStar = '<img src="/stela/assets/star.png" width="30" height="30"/>'.repeat(Math.floor(rating));
+                const noStar = '<img src="/stela/assets/starsebelum.png"  width="30" height="30"//>'.repeat(Math.floor(numStars - rating));
+                $(this).html(`${fullStar}${noStar}`);
+            });
+        }
+        $(function() {
+            $('.starss').starss();
+        });
+        $.fn.starss = function() {
+            return $(this).each(function() {
+                const rating = $(this).data("rating");
+                const numStars = $(this).data("numStars");
+                const fullStar = '<i class="fas fa-star fa-xl" style="color:#FD841F"></i>'.repeat(Math.floor(rating));
+                const halfStar = (rating % 1 !== 0) ? '<i class="fas fa-star-half-alt fa-xl" style="color:#FD841F"></i>' : '';
+                const noStar = '<i class="far fa-star fa-xl" style="color:#FD841F"></i>'.repeat(Math.floor(numStars - rating));
+                $(this).html(`${fullStar}${halfStar}${noStar}`);
+            });
+        }
+    </script>
+    <!-- pesan  -->
+    <script>
+        <? if ($_SESSION['flash']) { ?>
+            Swal.fire(
+                'Good job!',
+                '<?= $_SESSION['flash'] ?>',
+                'success'
+            )
+        <? unset($_SESSION['flash']);
+        } elseif ($_SESSION['flash_error']) { ?>
+            Swal.fire(
+                'Aktifitas tidak dapat dipenuhi!',
+                '<?= $_SESSION['flash_error'] ?>',
+                'warning'
+            )
+        <? unset($_SESSION['flash_error']);
+        } ?>
+    </script>
+
+    <script>
+        // document.getElementById("toastbtn").onclick = function() {
+        //     var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+        //     var toastList = toastElList.map(function(toastEl) {
+        //         return new bootstrap.Toast(toastEl)
+        //     })
+        //     toastList.forEach(toast => toast.show())
+        // }
+        function notif() {
+            var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+            var toastList = toastElList.map(function(toastEl) {
+                return new bootstrap.Toast(toastEl)
+            })
+            toastList.forEach(toast => toast.show())
+        }
+        //notif();
+    </script>
+</body>
+
+</html>

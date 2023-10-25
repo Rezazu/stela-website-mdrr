@@ -1,0 +1,185 @@
+
+
+        <!-- Main content -->
+      <section class="content">
+      <div class="container-fluid">
+        <!-- <h3 class="text-dark mb-4">Daftar Permintaan</h3> -->
+        <div class="card shadow" style="border-bottom-right-radius: 15px;border-top-right-radius: 15px;border-top-left-radius: 15px;border-bottom-left-radius: 15px;">
+            <div class="card-header py-3" style="border-top-left-radius: 15px;border-top-right-radius: 15px;">
+                  <div class="row">
+                      <div class="col-md-6">
+                        <!-- <p class="text-primary m-0 fw-bold">Daftar Permintaan</p> -->
+                      <button type="button" class="btn btn-outline-primary" onClick="hideTableTiketDone();">Dalam Proses</button>
+                      <button type="button" class="btn btn-outline-primary" onClick="hideTableTiket();">Selesai</button>
+                      </div>
+                      <div class="col-md-6 d-lg-flex justify-content-lg-end align-items-lg-center"><button class="btn btn-secondary" onclick="location.href='/servicedesk/buat-tiket/'" style="background: rgb(53,167,184);">Buat Tiket</button></div>
+                  </div>
+
+            </div>
+            <div class="card-body" id="table-tiket">
+                <div >
+                <table id="daftar-tiket" class="table table-striped" style="border-radius:15px;">
+                  <thead style="background: rgba(208,204,204,0.76);" >
+                  <tr>
+                    <th class="text-center">id</th>
+                      <th class="text-center">Tanggal</th>
+                    <th class="text-center">Jam</th>
+                    <th class="text-center">Kode Tiket</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">Kategori</th>
+                    <th class="text-center">Urgensi</th>
+                    <th class="text-center">Petugas</th>
+                    <th class="text-center">Tindakan</th>
+
+                  </tr>
+                  </thead>
+                  <tbody style="background: rgba(231,231,231,0.64);">
+                    <?php
+                   // rsort($this->data);
+                    if ($this->data) {
+                        foreach ($this->data as $data) {
+                            if ($data['id_status_tiket'] != 6) {
+                                # code...
+                                echo "<tr>";
+                                echo "<td align='center'>" . $data['id'] . "</td>";
+                                echo "<td align='center'>" . $data['tanggal_saja'] . "</td>";
+                                echo "<td align='center'>" . $data['jam'] . "</td>";
+                                echo "<td align='center'>" . $data['no_tiket'] . "</td>";
+                                echo "<td align='center'>" . $data['status_tiket_internal'] . "</td>";
+                                echo "<td align='center'>" . $data['kategori'] . "</td>";
+                                if ($data['id_urgensi'] == 1) {
+                                    echo "<td align='center'><i style='color:red;' class='fa-solid fa-circle'></i>" . $data['urgensi'] . "</td>";
+                                }
+                                if ($data['id_urgensi'] == 2) {
+                                    echo "<td align='center'><i style='color:yellow;'class='fa-solid fa-circle'></i>" . $data['urgensi'] . "</td>";
+                                }
+                                if ($data['id_urgensi'] == 3) {
+                                    echo "<td align='center'><i style='color:blue;' class='fa-solid fa-circle'></i>" . $data['urgensi'] . "</td>";
+                                }
+                                if ($data['id_urgensi'] == 4) {
+                                    echo "<td align='center'><i style='color:green;' class='fa-solid fa-circle'></i>" . $data['urgensi'] . "</td>";
+                                }
+                                if ($data['id_urgensi'] == null) {
+                                    echo "<td align='center'> </td>";
+                                }
+                                if ($data['list_petugas']) {
+                                    echo "<td align='center'>";
+                                    foreach ($data['list_petugas'] as $petugas) {
+                                        echo $petugas['nama'] . "<br>";
+                                    }
+                                    echo "</td>";
+                                } else {
+                                    echo "<td align='center'> </td>";
+                                }
+                                echo "<td align='center' background: rgb(223,78,87);>";
+                                echo "<a class='btn btn-secondary' type='button' style='margin: 13px;background: rgb(53,168,184);' href='/servicedesk/permintaan/detail/" . $data[id] . "'>DETAIL</a>";
+                                echo "</td>";
+
+                                echo "</tr>";
+                            }
+
+                        }
+                    }
+		                          ?>
+
+
+                  </tbody>
+                </table>
+
+                </div>
+            </div>
+            <div class="card-body" id="table-tiket-done">
+                <div >
+                <table id="daftar-tiket-done" class="table table-striped" style="border-radius:15px;">
+                  <thead style="background: rgba(208,204,204,0.76);" >
+                  <tr>
+                    <th class="text-center">id</th>
+                    <th class="text-center">Tanggal</th>
+                    <th class="text-center">Jam</th>
+                    <th class="text-center">Kode Tiket</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">Kategori</th>
+                    <th class="text-center">Urgensi</th>
+                    <th class="text-center">Petugas</th>
+                    <th class="text-center">Tindakan</th>
+
+                  </tr>
+                  </thead>
+                  <tbody style="background: rgba(231,231,231,0.64);">
+                    <?php
+                   // rsort($this->data);
+                    if ($this->data) {
+                        foreach ($this->data as $data) {
+                            if ($data['id_status_tiket'] == 6) {
+                                # code...
+                                echo "<tr>";
+                                echo "<td align='center'>" . $data['id'] . "</td>";
+                                echo "<td align='center'>" . $data['tanggal_saja'] . "</td>";
+                                echo "<td align='center'>" . $data['jam'] . "</td>";
+                                echo "<td align='center'>" . $data['no_tiket'] . "</td>";
+                                echo "<td align='center'>" . $data['status_tiket_internal'] . "</td>";
+                                echo "<td align='center'>" . $data['kategori'] . "</td>";
+                                if ($data['id_urgensi'] == 1) {
+                                    echo "<td align='center'><i style='color:red;' class='fa-solid fa-circle'></i>" . $data['urgensi'] . "</td>";
+                                }
+                                if ($data['id_urgensi'] == 2) {
+                                    echo "<td align='center'><i style='color:yellow;'class='fa-solid fa-circle'></i>" . $data['urgensi'] . "</td>";
+                                }
+                                if ($data['id_urgensi'] == 3) {
+                                    echo "<td align='center'><i style='color:blue;' class='fa-solid fa-circle'></i>" . $data['urgensi'] . "</td>";
+                                }
+                                if ($data['id_urgensi'] == 4) {
+                                    echo "<td align='center'><i style='color:green;' class='fa-solid fa-circle'></i>" . $data['urgensi'] . "</td>";
+                                }
+                                if ($data['id_urgensi'] == null) {
+                                    echo "<td align='center'> </td>";
+                                }
+                                if ($data['list_petugas']) {
+                                    echo "<td align='center'>";
+                                    foreach ($data['list_petugas'] as $petugas) {
+                                        echo $petugas['nama'] . "<br>";
+                                    }
+                                    echo "</td>";
+                                } else {
+                                    echo "<td align='center'> </td>";
+                                }
+                                echo "<td align='center'background: rgb(223,78,87);>";
+                                echo "<a class='btn btn-secondary' type='button' style='margin: 13px;background: rgb(53,168,184);' href='/servicedesk/permintaan/detail/" . $data[id] . "'>DETAIL</a>";
+
+                                echo "</td>";
+
+                                echo "</tr>";
+                            }
+
+                        }
+                    }
+		                          ?>
+
+
+                  </tbody>
+                </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- ./wrapper -->
+
+
+<script>
+  function hideTableTiketDone() {
+    tableTiketDone = document.getElementById('table-tiket-done');
+    tableTiketDone.style.display = 'none';
+    tableTiket = document.getElementById('table-tiket');
+    tableTiket.style.display = 'block';
+  }
+  function hideTableTiket() {
+    tableTiketDone = document.getElementById('table-tiket-done');
+    tableTiketDone.style.display = 'block';
+    tableTiket = document.getElementById('table-tiket');
+    tableTiket.style.display = 'none';
+  }
+hideTableTiketDone();
+</script>
+

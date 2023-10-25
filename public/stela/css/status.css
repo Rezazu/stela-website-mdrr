@@ -1,0 +1,140 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+
+  box-sizing: border-box;
+}
+.progress__container {
+  height: 65rem;
+  max-width: 100%;
+  position: sticky;
+  margin-bottom: 5rem;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+}
+.progress__container::before {
+  content: "";
+  height: 65rem;
+  width: 0.5rem;
+  background-color: #ced6d5;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+}
+
+.ket-status{
+  height: 45%;
+}
+.ket-prosses{
+  height: 18%;
+}
+.team-width{
+  width: 150px;
+}
+ @media (max-width: 820px) {
+  .ket-status{
+    height: 38%;
+  }
+  .ket-prosses{
+    height: 15%;
+  }
+  .team-width{
+    width: 120px;
+    
+  }
+  .progress__container  {
+    
+    height: 25rem;
+    max-width: 100%;
+    position: sticky;
+    margin-bottom: 5rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+  }
+  .progress__container::before {
+    content: "";
+    height: 25rem;
+    width: 0.5rem;
+    background-color: #ced6d5;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+} 
+}
+.progress__bar {
+  height: 0%;
+  width: 0.5rem;
+  background-color: #28bdbd;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+  transition: 0.1s ease;
+}
+ /* @media (max-width: 810px) {
+  .progress__bar {
+    width: 0%;
+    height: 0.2rem;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+}  */
+.progress__circle {
+  width: 2rem;
+  aspect-ratio: 1;
+  color: #2f2e41;
+  background-color: #ced6d5;
+  border: 0.1rem solid #ced6d5;
+  border-radius: 50%;
+  /* font-size: 4rem; */
+  transition: 0.4s ease;
+  position: relative;
+}
+.progress__circle.active {
+  color: #00bfa6;
+  border: 0.1rem solid #00bfa6;
+  background-color: #398ae6;
+  box-shadow: #2eafeb 0px 0px 0px 10px;
+}
+.progress__span {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: unset !important;
+}
+.accordion-button:not(.collapsed) {
+  box-shadow: none !important;
+}
+.non-aktif{
+  pointer-events: none;
+  color: black;
+}
+
+.thp-all{
+  display: none;
+}
+
+.thp-permohonan{
+  display: none;
+}
+
+

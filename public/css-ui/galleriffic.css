@@ -1,0 +1,125 @@
+div.navigation {
+	/* Will be enabled from HTML */
+}
+div.content {
+	/* Will be enabled from HTML */
+	display: none;
+	float: right;
+	width: 736px; 
+}
+div.content a, div.navigation a {
+	text-decoration: none;
+	color: #777;
+}
+div.content  a:focus, div.content  a:hover, div.content  a:active {
+	text-decoration: underline;
+}
+div.controls {
+	margin-top: 5px;
+	height: 23px;
+}
+div.controls a {
+	padding: 5px;
+}
+div.ss-controls {
+	float: left;
+}
+div.nav-controls {
+	float: right; margin-right:20px;
+}
+div.nav-controls a {
+	margin-left: 5px;
+}
+div.loader {
+	background-image: url('/images/layout/loading.gif');
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 710px;
+	height: 350px
+}
+div.slideshow {
+	clear: both;
+}
+div.slideshow span.image-wrapper {
+	float: left;
+	padding-bottom: 12px;
+}
+div.slideshow a.advance-link {
+	padding: 1px;
+	display: block;
+	border: 1px solid #ccc;
+}
+div.slideshow img {
+	border: none;
+	display: block;
+}
+div.download {
+	float: right;
+}
+div.embox {
+	clear: both;
+	border: 1px solid rgb(142,132,107);
+	background-color: rgb(254,238,189);
+	padding: 12px;
+	width:680px;
+}
+div.image-title {
+	font-weight: bold;
+	font-size: 1.4em;
+	color: rgb(225,90,20);
+}
+div.image-desc {
+	line-height: 1.3em;
+	padding-top: 12px;
+}
+ul.thumbs {
+	clear: both;
+	padding: 0;
+}
+ul.thumbs li {
+	float: left;
+	padding: 0;
+	margin: 5px 10px 5px 0;
+	list-style: none;
+}
+a.thumb {
+	padding: 2px;
+	display: block;
+	border: 1px solid #ccc;
+}
+ul.thumbs li.selected a.thumb {
+	background: #000;
+}
+a.thumb:focus {
+	outline: none;
+}
+ul.thumbs img {
+	border: none;
+	display: block;
+}
+div.pagination {
+	clear: both;
+}
+div.navigation div.top {
+	height: 5px;
+}
+div.navigation div.bottom {
+	margin-top: 12px;
+}
+div.pagination a, div.pagination span.current {
+	display: block;
+	float: left;
+	margin-right: 2px;
+	padding: 4px 7px 2px 7px;
+	border: 1px solid #ccc;
+}
+div.pagination a:hover {
+	background-color: #eee;
+	text-decoration: none;
+}
+div.pagination span.current {
+	font-weight: bold;
+	background-color: #000;
+	border-color: #000;
+	color: #fff;
+}

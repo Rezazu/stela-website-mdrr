@@ -1,0 +1,54 @@
+<div class="row mb-2">
+    <label class="col-md-2 d-flex align-items-center m-0"><strong>Pilih Tahun</strong></label>
+    <select class="w-100 col-md-2 tahunpilihtahunpetugas" data-placeholder="Pilih tahun" name="tahunpilihtahunpetugas" id="tahunpilihtahunpetugas">
+        <!-- <option value="">pilih tahun</option>
+      <option value="2022">2022</option>
+      <option value="2023">2023</option> -->
+        <?php
+        foreach ($this->data['list_tahun'] as $datatahun) {
+            echo '<option value="' . $datatahun . '">' . $datatahun . '</option>';
+        }
+        ?>
+    </select>
+</div>
+<div class="card shadow" style="border-bottom-right-radius: 15px;border-top-right-radius: 15px;border-top-left-radius: 15px;border-bottom-left-radius: 15px;">
+    <!-- <div class="card-header py-3">
+            <p class="text-primary m-0 fw-bold">Daftar Petugas</p>
+        </div> -->
+    <div class="card-body">
+        <div class="table-responsive tablepetugas" id="tablepetugas" role="grid" aria-describedby="dataTable_info" style="background: var(--bs-table-bg);border-radius: 10px;">
+            <table id="petugasrekap" class="table table-striped">
+                <thead style="background: rgba(208,204,204,0.76);">
+                    <tr>
+                        <th class="text-center">Nama</th>
+                        <th class="text-center">Rating</th>
+                        <th class="text-center">Jumlah Tiket</th>
+                        <th class="text-center">Tiket Dengan Rating</th>
+                        <th class="text-center">Poin</th>
+
+                    </tr>
+                </thead>
+                <tbody id="tableBody" class="tableBody" style="background: rgba(231,231,231,0.64);">
+                    <?php
+                    // if ($this->data == null) {
+                    //     # code...
+                    // } else {
+                    //     foreach ($this->data['list_data']['All']['pengguna'] as $data) {
+                    //         echo "<tr>";
+                    //         echo "<td align='center'>" . $data['nama'] . "</td>";
+                    //         echo "<td align='center'>" . $data['rating'] . "</td>";
+                    //         echo "<td align='center'>" . $data['jumlah_tiket'] . "</td>";
+                    //         echo "<td align='center'>" . $data['jumlah_tiket_rating'] . "</td>";
+                    //         echo "<td align='center'>" . $data['point'] . "</td>";
+                    //         echo "</tr>";
+                    //     }
+                    // }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<?php
+//var_dump($this->data['list_data']['All']['pengguna'])
+?>

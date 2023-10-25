@@ -1,0 +1,57 @@
+<!-- Main content -->
+<section class="content">
+
+    <div class="container">
+        <div class="container-fluid">
+            <h3 class="text-dark mb-4">Tahapan Proyek <? if ($this->data['reference_by'] != null) {
+                echo 'Lanjutan dari <a href="/programmer/project/id_tiket/' . $this->data['reference_by'] . '">Tiket</a>'; 
+                } ?>
+                </h3>
+            <div class="card shadow" style="border-bottom-right-radius: 15px;border-top-right-radius: 15px;border-top-left-radius: 15px;border-bottom-left-radius: 15px;">
+                <div class="card-header py-3" style="border-top-left-radius: 15px;border-top-right-radius: 15px;">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12 ">
+                            <p class="text-primary m-0 fw-bold">Harap menyelesaikan tahapan yang ada terlebih dahulu sebelum melanjutkan ke tahapan selanjutnya</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card-body row justify-content-center">
+                
+                    <?
+                    // var_dump($this->data['aktif']);
+                    if ($this->data != null) {
+                        foreach ($this->data['tahapan'] as $i) {
+                            if ($i['id_tahapan'] > 1) {
+                    ?>
+                                <a class="row col-md-3 m-3 p-3 text-white shadow justify-content-center kotak-s <?=(($this->data['aktif'] == false) ? 'k-mati': '')?>" href="/programmer/project-detail/id_tiket/<?= $this->data['id_tiket'] ?>/id_tahapan/<?= $i['id_tahapan'] ?>" type="button" style="background: rgb(111,249,225);background: linear-gradient(0deg, rgba(111,249,225,1) 0%, rgba(52,172,188,1) 100%);border-radius: 20px">
+                                    <i class="fa-solid fa-table-columns fs-1 text-center"></i>
+                                    <label class="m-1 fs-5 text-center">
+                                        <?= $i['tahapan'] ?>
+                                    </label>
+                                    <label class="m-1 fs-5 text-center"><?= $i['persentase'] ?></label>
+                                    <label class="m-2 col-md-4 fs-6 bg-green text-center" style="border-radius: 5px;"><i class="fa-solid fa-file-circle-check"></i> <?= $i['tahapan_selesai'] ?>/<?= $i['tahapan_total'] ?></label>
+                                </a>
+                    <?    }
+                        }
+                    } ?>
+                    <div class="row mt-2">
+                        <div class="mb-3 col-md-6">
+                            <? if ($this->data['reference_by'] != null) { ?>
+                                <label class="form-label"><strong>Lanjutan Pada</strong> <a href="/programmer/project/id_tiket/<?= $this->data['reference_by'] ?>">Tiket</a> </label>
+                            <? } ?>
+                        </div>
+                        <div class="mb-3 col-md-6 d-flex justify-content-end">
+                            <? if ($this->data['reference_to'] != null) { ?>
+                                <label class="form-label"><strong>Dilanjutkan Pada</strong> <a href="/programmer/project/id_tiket/<?= $this->data['reference_to'] ?>">Tiket</a> </label>
+                            <? } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- /.content -->

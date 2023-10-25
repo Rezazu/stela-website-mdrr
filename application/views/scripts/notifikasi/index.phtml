@@ -1,0 +1,43 @@
+<style>
+.notif:hover{
+    background-color:  rgb(244 246 247 / 100%);
+}
+</style>
+    <?php if ($this->data) : foreach ($this->data as $notif) : ?>
+        <div class="container mx-auto pt-1 px-3 notif" id="notif" onclick="window.location.href='/notifikasi/read-notifikasi/id_notif/<?= $notif->id ?>/nomor_tiket/<?= $notif->no_tiket ?>'">
+            <?php if (!$notif->dibaca) : ?>
+                <div class="row" style="background: rgba(235,234,234,0.65);">
+                <?php else : ?>
+                    <div class="row " style="background: rgb(244 246 247 / 95%);">
+                    <?php endif ?>
+                    <div class="col-3 col-md-2 col-lg-1">
+                        <div class="mx-3 mt-1 bs-icon-md bs-icon-circle bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center me-4 d-inline-block bs-icon xl">
+                        <?php if (!$notif->dibaca) : ?>
+                            <i class="fa-regular fa-bell"></i>
+                            <?php else : ?>
+                                <i class="fa-solid fa-check"></i>
+                            <?php endif ?>
+                        </div>
+                    </div>
+                    <div class="col-9 col-md-7 col-lg-8 offset-md-0">
+                        <span>No Tiket : <?= $notif->no_tiket ?></span>
+                        <h5><?= $notif->keterangan ?></h5>
+
+                    </div>
+                    <div class="col-9 col-md-3 offset-3 offset-md-0">
+                        <span> <?= $notif->tanggal ?></span>
+
+                    </div>
+                    </div>
+                </div>
+            <?php endforeach;
+    else : ?>
+            <!-- <a class="dropdown-item d-flex align-items-center" href="#">
+                no data
+                <a> -->
+                <div class="fw-bold text-center fs-3">
+    Belum Ada Notifikasi</div>
+                <?php endif ?>
+
+                <?php // var_dump($this->data); 
+                ?>

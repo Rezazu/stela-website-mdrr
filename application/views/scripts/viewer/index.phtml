@@ -1,0 +1,1611 @@
+<div class="row">
+          <div class="col-md-4">
+             <!-- BAR CHART -->
+             <div class="card card-info">
+              <div class="card-header">
+                <h3 class="card-title">Bar Chart</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="chart">
+                  <canvas id="barChart1tahun" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <div class="col-md-4">
+             <!-- BAR CHART -->
+             <div class="card card-info">
+              <div class="card-header">
+                <h3 class="card-title">Bar Chart</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="chart">
+                  <canvas id="barChart1bulan" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <div class="col-md-4">
+             <!-- BAR CHART -->
+             <div class="card card-info">
+              <div class="card-header">
+                <h3 class="card-title">Bar Chart</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="chart">
+                  <canvas id="barChart1minggu" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+<!-- rank petugas bulan -->
+<div class="">
+      <div class="col-lg-12 col-xxl-12">
+        <div class="card shadow " style="border-radius: 15px;">
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <p class="text-primary m-0 fw-bold" style="padding-bottom: 10px;">Rekap Peringkat Bulanan </p>
+              </div>
+            </div>
+            <div class="row">
+                <? foreach ($this->data['top_petugas_bulan'] as $key => $value) : ?>
+                    <div class="col-sm-2">
+                        <label class="form-label"><strong><?= $key ?></strong><br /></label>
+                        <h6>1.&nbsp<?= $value[1] ? $value[1] : '-' ?> <br>2.&nbsp<?= $value[2] ? $value[2] : '-' ?> <br>3.&nbsp<?= $value[3] ? $value[3] : '-' ?></h6>
+                    </div>
+                <? endforeach; ?>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- close rank petugas bulan -->
+
+<!-- open rank petugas tahun -->
+<div class="container py-4 py-xl-5">
+    <div class="row mb-5">
+        <div class="col-md-8 col-xl-6 text-center mx-auto">
+            <h2>Peringkat Petugas Tahun Ini</h2>
+            <!-- <p class="w-lg-50">Curae hendrerit donec commodo hendrerit egestas tempus, turpis facilisis nostra nunc. Vestibulum dui eget ultrices.</p> -->
+        </div>
+    </div>
+    <div class="row gy-4 gy-xl-0 row-cols-1 row-cols-md-2 row-cols-xl-3 d-xl-flex align-items-xl-center ">
+        <div class="col">
+            <div class="card" style="border-width: 1px;border-radius: 15px; background:#f4f6f9;">
+                <div class="card-body text-center p-4">
+                    <h6 class="text-uppercase text-muted card-subtitle">PERINGKAT 2</h6><br>
+                    <img class="rounded-circle mb-3 fit-cover" width="130" height="130" src="<?= $this->data['top_petugas']['year'][1]['profile'] ? $this->data['top_petugas']['year'][1]['profile'] : '/stela/assets/profile/avatar1.jpeg' ?>" />
+                    <h5 class="fw-bold text-primary"><strong><?= $this->data['top_petugas']['year']['1']['nama'] ?></strong></h5>
+                    <p class="text-muted card-text mb-2"><?= $this->data['top_petugas']['year']['1']['peran'] ?></p>
+                </div>
+            </div>
+        </div>
+        <div class="col" style>
+            <div class="card border-primary" style="border-width: 4px;border-radius: 15px;background:#f4f6f9;">
+                <div class="card-body text-center p-4">
+                  <span class="badge rounded-pill bg-primary position-absolute top-0 start-50 translate-middle text-uppercase" style="font-size: 19px;">PERINGKAT 1</span>
+                    <h6 class="text-uppercase text-muted card-subtitle"><img src="/stela/assets/crown.png" width="190" height="96" /></h6><img class="rounded-circle mb-3 fit-cover" width="222" height="222" src="<?= $this->data['top_petugas']['year'][0]['profile'] ? $this->data['top_petugas']['year'][0]['profile'] : '/stela/assets/profile/avatar1.jpeg' ?>" />
+                    <h5 class="fw-bold text-primary"><strong><?= $this->data['top_petugas']['year']['0']['nama'] ?></strong></h5>
+                    <p class="text-muted card-text mb-2"><?= $this->data['top_petugas']['year']['0']['peran'] ?></p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="border-width: 1px;border-radius: 15px;background:#f4f6f9;">
+                <div class="card-body text-center p-4">
+                    <h6 class="text-uppercase text-muted card-subtitle">PERINGKAT 3</h6><br>
+                    <img class="rounded-circle mb-3 fit-cover" width="130" height="130" src="<?= $this->data['top_petugas']['year'][2]['profile'] ? $this->data['top_petugas']['year'][2]['profile'] : '/stela/assets/profile/avatar1.jpeg' ?>" />
+                    <h5 class="fw-bold text-primary"><strong><?= $this->data['top_petugas']['year']['2']['nama'] ?></strong></h5>
+                    <p class="text-muted card-text mb-2"><?= $this->data['top_petugas']['year']['2']['peran'] ?></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- close rank  -->
+
+<!-- urgensi -->
+          <div class="col-md-12">
+            <div class="card card-info collapsed-card">
+              <div class="card-header">
+                <h3 class="card-title">Jumlah Tiket Berdasarkan Urgensi</h3>
+
+                <div class="card-tools">
+                  
+                  <button type="button" class="btn btn-tool" data-card-widget="maximize">
+                    <i class="fas fa-expand"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-plus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+                <!-- /.card-tools -->
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <h6> Jumlah tiket berdasarkan Urgensi Tahun Ini  </h5>
+                <div class="row">
+                  <div class="col-md-3 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span class="info-box-icon bg-danger"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Critical</span>
+                        <span class="info-box-number"><?= $this->data[urgensi][Critical][year] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-3 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span class="info-box-icon bg-warning"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">High</span>
+                        <span class="info-box-number"><?= $this->data[urgensi][High][year] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-3 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span class="info-box-icon bg-info"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Normal</span>
+                        <span class="info-box-number"><?= $this->data[urgensi][Normal][year] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-3 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Low</span>
+                        <span class="info-box-number"><?= $this->data[urgensi][Low][year] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+
+                </div>
+                <h6> Jumlah tiket berdasarkan Urgensi Bulan Ini  </h5>
+                <div class="row">
+                  <div class="col-md-3 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span class="info-box-icon bg-danger"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Critical</span>
+                        <span class="info-box-number"><?= $this->data[urgensi][Critical][month] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-3 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span class="info-box-icon bg-warning"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">High</span>
+                        <span class="info-box-number"><?= $this->data[urgensi][High][month] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-3 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span class="info-box-icon bg-info"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Normal</span>
+                        <span class="info-box-number"><?= $this->data[urgensi][Normal][month] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-3 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Low</span>
+                        <span class="info-box-number"><?= $this->data[urgensi][Low][month] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+
+                </div>
+                <h6> Jumlah tiket berdasarkan Urgensi Hari Ini</h5>
+                <div class="row">
+                  <div class="col-md-3 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span class="info-box-icon bg-danger"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Critical</span>
+                        <span class="info-box-number"><?= $this->data[urgensi][Critical][today] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-3 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span class="info-box-icon bg-warning"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">High</span>
+                        <span class="info-box-number"><?= $this->data[urgensi][High][today] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-3 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span class="info-box-icon bg-info"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Normal</span>
+                        <span class="info-box-number"><?= $this->data[urgensi][Normal][today] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-3 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Low</span>
+                        <span class="info-box-number"><?= $this->data[urgensi][Low][today] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+<!-- urgensi -->
+<!-- via -->
+          <div class="col-md-12">
+            <div class="card card-info collapsed-card">
+              <div class="card-header">
+                <h3 class="card-title">Jumlah Tiket Berdasarkan via</h3>
+
+                <div class="card-tools">
+                  
+                  <button type="button" class="btn btn-tool" data-card-widget="maximize">
+                    <i class="fas fa-expand"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-plus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+                <!-- /.card-tools -->
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <h6>Jumlah tiket berdasarkan via Tahun Ini  </h6>
+                <div class="row">
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-danger"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Nota Dinas</span>
+                        <span class="info-box-number"><?= $this->data[via]['Nota Dinas'][year] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-warning"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Telepon</span>
+                        <span class="info-box-number"><?= $this->data[via]['Telepon'][year] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-info"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Whatsapp</span>
+                        <span class="info-box-number"><?= $this->data[via]['Whatsapp'][year] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Langsung</span>
+                        <span class="info-box-number"><?= $this->data[via]['Langsung'][year] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Online</span>
+                        <span class="info-box-number"><?= $this->data[via]['Online'][year] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+
+                </div>
+                <h6>Jumlah tiket berdasarkan via Bulan Ini  </h6>
+                <div class="row">
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-danger"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Nota Dinas</span>
+                        <span class="info-box-number"><?= $this->data[via]['Nota Dinas'][month] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-warning"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Telepon</span>
+                        <span class="info-box-number"><?= $this->data[via]['Telepon'][month] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-info"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Whatsapp</span>
+                        <span class="info-box-number"><?= $this->data[via]['Whatsapp'][month] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Langsung</span>
+                        <span class="info-box-number"><?= $this->data[via]['Langsung'][month] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Online</span>
+                        <span class="info-box-number"><?= $this->data[via]['Online'][month] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+
+                </div>
+                <h6>Jumlah tiket berdasarkan via Hari Ini
+  </h6>                <div class="row">
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-danger"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Nota Dinas</span>
+                        <span class="info-box-number"><?= $this->data[via]['Nota Dinas'][today] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-warning"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Telepon</span>
+                        <span class="info-box-number"><?= $this->data[via]['Telepon'][today] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-info"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Whatsapp</span>
+                        <span class="info-box-number"><?= $this->data[via]['Whatsapp'][today] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Langsung</span>
+                        <span class="info-box-number"><?= $this->data[via]['Langsung'][today] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Online</span>
+                        <span class="info-box-number"><?= $this->data[via]['Online'][today] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+<!-- via -->
+<!-- status -->
+          <div class="col-md-12">
+            <div class="card card-info collapsed-card">
+              <div class="card-header">
+                <h3 class="card-title">Jumlah Tiket Berdasarkan Status</h3>
+
+                <div class="card-tools">
+                  
+                  <button type="button" class="btn btn-tool" data-card-widget="maximize">
+                    <i class="fas fa-expand"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-plus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+                <!-- /.card-tools -->
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <h6>Jumlah tiket berdasarkan status Tahun Ini  </h6>
+                <div class="row">
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-danger"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Open</span>
+                        <span class="info-box-number"><?= $this->data[status]['Open'][year] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-warning"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">OnHold</span>
+                        <span class="info-box-number"><?= $this->data[status]['OnHold'][year] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-info"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">OnHold(item not avalaible)</span>
+                        <span class="info-box-number"><?= $this->data[status]['OnHold(item not avalaible)'][year] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Pending</span>
+                        <span class="info-box-number"><?= $this->data[status]['Pending'][year] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-danger"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">OnProcess</span>
+                        <span class="info-box-number"><?= $this->data[status]['OnProcess'][year] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-warning"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Done</span>
+                        <span class="info-box-number"><?= $this->data[status]['Done'][year] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Waiting</span>
+                        <span class="info-box-number"><?= $this->data[status]['Waiting'][year] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-primary"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Assigned</span>
+                        <span class="info-box-number"><?= $this->data[status]['Assigned'][year] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Solved</span>
+                        <span class="info-box-number"><?= $this->data[status]['Solved'][year] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+
+                </div>
+                <h6>Jumlah tiket berdasarkan status Bulan Ini  </h6>
+                <div class="row">
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-danger"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Open</span>
+                        <span class="info-box-number"><?= $this->data[status]['Open'][month] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-warning"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">OnHold</span>
+                        <span class="info-box-number"><?= $this->data[status]['OnHold'][month] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-info"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">OnHold(item not avalaible)</span>
+                        <span class="info-box-number"><?= $this->data[status]['OnHold(item not avalaible)'][month] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Pending</span>
+                        <span class="info-box-number"><?= $this->data[status]['Pending'][month] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-danger"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">OnProcess</span>
+                        <span class="info-box-number"><?= $this->data[status]['OnProcess'][month] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-warning"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Done</span>
+                        <span class="info-box-number"><?= $this->data[status]['Done'][month] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Waiting</span>
+                        <span class="info-box-number"><?= $this->data[status]['Waiting'][month] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-primary"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Assigned</span>
+                        <span class="info-box-number"><?= $this->data[status]['Assigned'][month] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Solved</span>
+                        <span class="info-box-number"><?= $this->data[status]['Solved'][month] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+
+                </div>
+                <h6>Jumlah tiket berdasarkan status Hari Ini
+  </h6>                <div class="row">
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-danger"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Open</span>
+                        <span class="info-box-number"><?= $this->data[status]['Open'][today] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-warning"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">OnHold</span>
+                        <span class="info-box-number"><?= $this->data[status]['OnHold'][today] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-info"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">OnHold(item not avalaible)</span>
+                        <span class="info-box-number"><?= $this->data[status]['OnHold(item not avalaible)'][today] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Pending</span>
+                        <span class="info-box-number"><?= $this->data[status]['Pending'][today] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-danger"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">OnProcess</span>
+                        <span class="info-box-number"><?= $this->data[status]['OnProcess'][today] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-warning"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Done</span>
+                        <span class="info-box-number"><?= $this->data[status]['Done'][today] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Waiting</span>
+                        <span class="info-box-number"><?= $this->data[status]['Waiting'][today] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-primary"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Assigned</span>
+                        <span class="info-box-number"><?= $this->data[status]['Assigned'][today] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Solved</span>
+                        <span class="info-box-number"><?= $this->data[status]['Solved'][today] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+
+                </div>
+               
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+<!-- status -->
+<!-- kategori -->
+          <div class="col-md-12">
+            <div class="card card-info collapsed-card">
+              <div class="card-header">
+                <h3 class="card-title">Jumlah Tiket Berdasarkan Kategori</h3>
+
+                <div class="card-tools">
+                  
+                  <button type="button" class="btn btn-tool" data-card-widget="maximize">
+                    <i class="fas fa-expand"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-plus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+                <!-- /.card-tools -->
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <h6>Jumlah tiket berdasarkan kategori Tahun Ini   </h6>
+                <div class="row">
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-danger"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Singa Rusia</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['Singa Rusia'][year] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-warning"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Internet & Jaringan</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['Internet & Jaringan'][year] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-info"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Sistem Operasi</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['Sistem Operasi'][year] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Software</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['Software'][year] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-danger"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Hardware</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['Hardware'][year] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-warning"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Aplikasi</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['Aplikasi'][year] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Pengembangan Jaringan</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['Pengembangan Jaringan'][year] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-primary"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Lain-Lain</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['Lain-Lain'][year] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Teleconference</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['Teleconference'][year] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-danger"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">File Sharing dan Cloud</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['File Sharing dan Cloud'][year] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-warning"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">File Sharing dan Cloud</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['File Sharing dan Cloud'][year] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Masuk Ruang Server</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['Masuk Ruang Server'][year] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-primary"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Insiden</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['Insiden'][year] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+
+                </div>
+                <h6>Jumlah tiket berdasarkan kategori Bulan Ini   </h6>
+                <div class="row">
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-danger"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Singa Rusia</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['Singa Rusia'][month] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-warning"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Internet & Jaringan</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['Internet & Jaringan'][month] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-info"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Sistem Operasi</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['Sistem Operasi'][month] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Software</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['Software'][month] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-danger"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Hardware</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['Hardware'][month] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-warning"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Aplikasi</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['Aplikasi'][month] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Pengembangan Jaringan</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['Pengembangan Jaringan'][month] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-primary"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Lain-Lain</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['Lain-Lain'][month] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Teleconference</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['Teleconference'][month] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-danger"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">File Sharing dan Cloud</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['File Sharing dan Cloud'][month] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-warning"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">File Sharing dan Cloud</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['File Sharing dan Cloud'][month] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Masuk Ruang Server</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['Masuk Ruang Server'][month] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-primary"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Insiden</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['Insiden'][month] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+
+                </div>
+                <h6>Jumlah tiket berdasarkan kategori Hari Ini
+   </h6>                <div class="row">
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-danger"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Singa Rusia</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['Singa Rusia'][today] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-warning"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Internet & Jaringan</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['Internet & Jaringan'][today] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-info"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Sistem Operasi</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['Sistem Operasi'][today] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Software</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['Software'][today] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-danger"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Hardware</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['Hardware'][today] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-warning"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Aplikasi</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['Aplikasi'][today] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Pengembangan Jaringan</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['Pengembangan Jaringan'][today] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-primary"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Lain-Lain</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['Lain-Lain'][today] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Teleconference</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['Teleconference'][today] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-danger"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">File Sharing dan Cloud</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['File Sharing dan Cloud'][today] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-warning"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">File Sharing dan Cloud</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['File Sharing dan Cloud'][today] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Masuk Ruang Server</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['Masuk Ruang Server'][today] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-primary"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Insiden</span>
+                        <span class="info-box-number"><?= $this->data[kategori]['Insiden'][today] ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+
+                </div>
+                
+               
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+<!-- kategori -->
+
+        
+
+
+<?php
+//  foreach($this->data['week']['data'] as $data){
+//  echo $data['petugas'];
+//  var_dump($data['petugas']);
+//  };
+//var_dump($this->data[date("Y")][sub_kategori]);
+//var_dump( $this->data[month][data][1]['jumlah_tiket']);
+?>
+
+<script>
+  let databulan1tahun = <?= json_encode($this->data[year][data])?>;
+    var data1tahun = {
+        labels  : ['Januari', 'Febuari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
+        datasets: [
+          {
+            label               : 'Data Tiket Selama 1 tahun Terakhir',
+            backgroundColor     : 'rgba(60,141,188,0.9)',
+            borderColor         : 'rgba(60,141,188,0.8)',
+            pointRadius          : false,
+            pointColor          : '#3b8bba',
+            pointStrokeColor    : 'rgba(60,141,188,1)',
+            pointHighlightFill  : '#fff',
+            pointHighlightStroke: 'rgba(60,141,188,1)',
+            data                : [
+                                  databulan1tahun[0]['jumlah_tiket'],
+                                  databulan1tahun[1]['jumlah_tiket'],
+                                  databulan1tahun[2]['jumlah_tiket'],
+                                  databulan1tahun[3]['jumlah_tiket'],
+                                  databulan1tahun[4]['jumlah_tiket'],
+                                  databulan1tahun[5]['jumlah_tiket'],
+                                  databulan1tahun[6]['jumlah_tiket'],
+                                  databulan1tahun[7]['jumlah_tiket'],
+                                  databulan1tahun[8]['jumlah_tiket'],
+                                  databulan1tahun[9]['jumlah_tiket'],
+                                  databulan1tahun[10]['jumlah_tiket'],
+                                  databulan1tahun[11]['jumlah_tiket'],
+                                  ]
+          },
+          
+        ]
+      }  
+      let dataminggu1bulan = <?= json_encode($this->data[month][data])?>;
+      var data1bulan= {
+        labels  : ['Minggu 1', 'Minggu 2', 'Minggu 3', 'Minggu 4'],
+        datasets: [
+          {
+            label               : 'Data Tiket Selama 1 bulan Terakhir',
+            backgroundColor     : 'rgba(60,141,188,0.9)',
+            borderColor         : 'rgba(60,141,188,0.8)',
+            pointRadius          : false,
+            pointColor          : '#3b8bba',
+            pointStrokeColor    : 'rgba(60,141,188,1)',
+            pointHighlightFill  : '#fff',
+            pointHighlightStroke: 'rgba(60,141,188,1)',
+            data                : [
+                                  dataminggu1bulan[1]['jumlah_tiket'],
+                                  dataminggu1bulan[2]['jumlah_tiket'],
+                                  dataminggu1bulan[3]['jumlah_tiket'],
+                                  dataminggu1bulan[4]['jumlah_tiket'],
+                                  ]
+          },
+          
+        ]
+      }
+      let datahari1minggu = <?= json_encode($this->data[week][data])?>;
+      var data1minggu= {
+        labels  : ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu',],
+        datasets: [
+          {
+            label               : 'Data Tiket Selama 1 minggu Terakhir',
+            backgroundColor     : 'rgba(60,141,188,0.9)',
+            borderColor         : 'rgba(60,141,188,0.8)',
+            pointRadius          : false,
+            pointColor          : '#3b8bba',
+            pointStrokeColor    : 'rgba(60,141,188,1)',
+            pointHighlightFill  : '#fff',
+            pointHighlightStroke: 'rgba(60,141,188,1)',
+            data                : [
+                                  datahari1minggu[0]['jumlah_tiket'],
+                                  datahari1minggu[1]['jumlah_tiket'],
+                                  datahari1minggu[2]['jumlah_tiket'],
+                                  datahari1minggu[3]['jumlah_tiket'],
+                                  datahari1minggu[4]['jumlah_tiket'],
+                                  datahari1minggu[5]['jumlah_tiket'],
+                                  datahari1minggu[6]['jumlah_tiket'],
+                                  ]
+          },
+          
+        ]
+      }
+</script>
+
+
+       

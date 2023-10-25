@@ -1,0 +1,413 @@
+<style>
+    *,
+    *::before,
+    *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+
+        box-sizing: border-box;
+    }
+
+    .progress_stela__container {
+        height: 18.5rem;
+        max-width: 100%;
+        position: sticky;
+        margin-bottom: 5rem;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .progress_stela__container::before {
+        content: "";
+        height: 18.5rem;
+        width: 0.5rem;
+        background-color: #ced6d5;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: -1;
+    }
+
+    .ket-status {
+        height: 35%;
+    }
+
+    .ket-prosses {
+        height: 18%;
+    }
+
+    .team-width {
+        width: 150px;
+    }
+
+    @media (max-width: 820px) {
+        .ket-status {
+            height: 33%;
+        }
+
+        .ket-prosses {
+            height: 15%;
+        }
+
+        .team-width {
+            width: 120px;
+
+        }
+
+        .progress_stela__container {
+
+            height: 15rem;
+            max-width: 100%;
+            position: sticky;
+            margin-bottom: 5rem;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .progress_stela__container::before {
+            content: "";
+            height: 15rem;
+            width: 0.5rem;
+            background-color: #ced6d5;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: -1;
+        }
+    }
+
+    .progress_stela__bar {
+        height: 0%;
+        width: 0.5rem;
+        background-color: #28bdbd;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: -1;
+        transition: 0.1s ease;
+    }
+
+    /* @media (max-width: 810px) {
+  .progress_stela__bar {
+    width: 0%;
+    height: 0.2rem;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+}  */
+    .progress_stela__circle {
+        width: 2rem;
+        aspect-ratio: 1;
+        color: #2f2e41;
+        background-color: #ced6d5;
+        border: 0.1rem solid #ced6d5;
+        border-radius: 50%;
+        /* font-size: 4rem; */
+        transition: 0.4s ease;
+        position: relative;
+    }
+
+    .progress_stela__circle.active {
+        color: #00bfa6;
+        border: 0.1rem solid #00bfa6;
+        background-color: #398ae6;
+        box-shadow: #2eafeb 0px 0px 0px 10px;
+    }
+
+    .progress_stela__span {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .accordion-button:not(.collapsed) {
+        background-color: unset !important;
+    }
+
+    .accordion-button:not(.collapsed) {
+        box-shadow: none !important;
+    }
+
+    .non-aktif {
+        pointer-events: none;
+        color: black;
+    }
+
+    .thp-all {
+        display: none;
+    }
+
+    .thp-permohonan {
+        display: none;
+    }
+</style>
+<div class="container">
+    <?php if (!$this->result['pesan'] && !$this->error) { ?>
+        <div class="row ">
+            <div class="col-md-4 pb-3">
+                <div class="card shadow" style="border-radius: 15px;">
+                    <div class="card-header py-3" style="background: rgb(255,255,255);border-top-left-radius: 15px;border-top-right-radius: 15px;">
+                        <p class="text-primary m-0 fw-bold">Status</p>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class=" pt-3 text-center">
+                                        <div class="progress_stela__container">
+                                            <div class="progress_stela__bar js-bar"></div>
+                                            <div class="progress_stela__circle js-circle active">
+                                                <span class="progress_stela__span"></span>
+                                                <h3></h3>
+                                            </div>
+                                            <div class="progress_stela__circle js-circle">
+                                                <span class="progress_stela__span"></span>
+                                            </div>
+                                            <div class="progress_stela__circle js-circle">
+                                                <span class="progress_stela__span"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col pt-2 ">
+                                    <div class="row ket-status">
+                                        <div>
+                                            <h3 class="fw-bold">Open</h3>
+                                            <h6>tiket dalam antrian</h>
+                                        </div>
+                                    </div>
+                                    <div class="row ket-status">
+                                        <div>
+                                            <h3 class="fw-bold">On Process</h3>
+                                            <h6>Operator meninjau lokasi</h>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div>
+                                            <h3 class="fw-bold">Close</h3>
+                                            <h6>selesai dikerjakan</h>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-lg-12 col-xxl-12">
+                        <div class="card shadow mb-3" style="border-radius: 15px;">
+                            <div class="card-body">
+                                <div>
+                                    <p class="text-primary m-0 fw-bold" style="padding-bottom: 10px;">Keterangan :</p>
+                                </div>
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-12">
+                                            <div class="mb-3"><label class="form-label"><strong>Pelapor</strong><br /></label><input id="pelapor" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->result['nama_pelapor'] ?>" disabled /></div>
+                                            <div class="mb-3"><label class="form-label"><strong>Unit Kerja</strong><br /></label><input id="Unit Kerja" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->result['unit_kerja'] ?>" disabled /></div>
+                                            <div class="mb-3"><label class="form-label"><strong>HP</strong><br /></label><input id="hp" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->result['hp'] ?>" disabled /></div>
+                                            <div class="mb-3"><label class="form-label"><strong>Email</strong><br /></label><input id="email" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->result['email'] ?>" disabled /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="mb-3"><label class="form-label"><strong>Keterangan</strong><br /></label><textarea id="keterangan" class="form-control" rows="5" name="signature" style="border-radius: 15px; height: 125px;" value="" disabled><?= $this->result['keterangan'] ?></textarea></div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="mb-3"><label class="form-label"><strong>Bagian</strong><br /></label><input id="bagian" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->result['bagian'] ?>" disabled /></div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="mb-3"><label class="form-label"><strong>Gedung</strong></label><input id="gedung" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->result['gedung'] ?>" disabled /></div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="mb-3"><label class="form-label"><strong>Lantai</strong></label><input id="lantai" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->result['lantai'] ?>" disabled /></div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="mb-3"><label class="form-label"><strong>Ruangan</strong></label><input id="ruangan" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->result['ruangan'] ?>" disabled /></div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <? if ($this->result['dokumen_lampiran'] != null) { ?>
+                                                    <label class="form-label"><strong>Dokumen Lampiran</strong></label><br>
+                                                    <? foreach ($this->result['dokumen_lampiran'] as $data) { ?>
+                                                        <a href="/storage/index/dokumen-lampiran/<?= $data['doc_name'] . '/ext/' . $data['ext'] ?>" target="_blank"><i class="fa-regular fa-file" style="font-size: 40px;"></i></a>
+                                                <? }
+                                                } ?>
+                                            </div>
+                                            <? if ($this->result['dokumen_lampiran'] == null) { ?>
+                                                <div class="mb-5" style="height:25px;"></div>
+                                            <? } ?>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="">
+            <? if ($this->result['solusi'] != null) { ?>
+                <div class="card shadow mb-3 " style="border-radius: 15px;">
+                    <div class="card-body">
+                        <form>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3"><label class="form-label" for="first_name"><strong>Feed Back</strong><br /></label>
+                                        <textarea id="signature-2" class="form-control" rows="5" name="signature" style="border-radius: 15px;" value="" disabled><?= $this->result['solusi'] ?></textarea>
+                                    </div>
+                                    <div class="text-end mb-3"><button class="btn btn-primary btn-sm" type="submit">Chat Admin</button></div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            <? } ?>
+        </div>
+        <div class="">
+            <?php if ($this->result["list_petugas"] != null) { ?>
+                <div class="card shadow mb-3" style="border-radius: 15px;">
+                    <div class="card-body">
+                        <div>
+                            <p class="fs-4 text-center m-0 fw-bold" style="padding-bottom: 25px;">Petugas</p>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="swiper mySwiper">
+                                        <div class="swiper-wrapper pb-3">
+                                            <?php foreach ($this->result["list_petugas"] as $i) : ?>
+
+                                                <div class="swiper-slide">
+                                                    <div class="card text-center">
+                                                        <div class="card-body text-center">
+                                                            <?php if (!$i["img"]) { ?>
+                                                                <img class="rounded-circle mb-3 fit-cover" width="100" height="100" src="<?= $i['profile'] ?>">
+                                                            <? } ?>
+                                                            <h5 class="fw-bold text-primary card-title mb-0"><strong>
+                                                                    <?= $i["nama"] ?>
+                                                                </strong></h5>
+                                                            <p class="text-muted card-text mb-2">
+                                                                <?= $i["peran"] ?>
+                                                            </p><br>
+                                                            <span class="starss" data-rating="<?= $i['rating'] ?>" data-num-stars="5"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            <?php endforeach ?>
+                                        </div>
+                                        <div class="swiper-pagination pt-5"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+    <?php } else { ?>
+        <div class="text-center fw-bold fs-3">
+            <?= $this->result['pesan'] ?>
+            <?= $this->error ?>
+        </div>
+    <?php }
+//    var_dump($this->result["list_petugas"]) ?>
+</div>
+
+<script src="/stela/js/swiper-bundle.min.js"></script>
+<script>
+    let statuss = "<?= $this->result['id_status_tiket'] ?>";
+    let kategori = "<?= $this->result['id_sub_kategori'] ?>";
+    let petugas = "<?= count($this->result["list_petugas"]) ?>";
+    if (petugas == 2) {
+        var swiper = new Swiper(".mySwiper", {
+            loop: true,
+            loopFillGroupWithBlank: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            breakpoints: {
+                260: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                },
+                500: {
+                    slidesPerView: 2,
+                    spaceBetween: 40,
+                },
+                1024: {
+
+                    slidesPerView: 2,
+                    spaceBetween: 50,
+                },
+            },
+        });
+    }
+    if (petugas == 1) {
+        var swiper = new Swiper(".mySwiper", {
+            loop: true,
+            loopFillGroupWithBlank: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            breakpoints: {
+                260: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                },
+                500: {
+                    slidesPerView: 1,
+                    spaceBetween: 40,
+                },
+                1024: {
+
+                    slidesPerView: 1,
+                    spaceBetween: 50,
+                },
+            },
+        });
+    }
+    if (petugas > 2) {
+        var swiper = new Swiper(".mySwiper", {
+            loop: true,
+            loopFillGroupWithBlank: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            breakpoints: {
+                260: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                },
+                500: {
+                    slidesPerView: 2,
+                    spaceBetween: 40,
+                },
+                1024: {
+
+                    slidesPerView: 3,
+                    spaceBetween: 50,
+                },
+            },
+        });
+    }
+</script>

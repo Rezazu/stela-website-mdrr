@@ -1,0 +1,23 @@
+<!-- Main content -->
+<section class="content">
+
+  <!-- <? var_dump($this->data['list_tahun']) ?> -->
+  <br>
+  <div class="row">
+    <label class="col-md-2 d-flex align-items-center m-0"><strong>Pilih Tahun</strong></label>
+    <select class="w-100 col-md-2" data-placeholder="Pilih Tahun" name="tahun" id="tahun-pilih-permintaan">
+      <?php
+      foreach ($this->data['list_tahun'] as $data) {
+        echo '<option value="' . $data . '">' . $data . '</option>';
+      }
+      ?>
+    </select>
+  </div>
+
+  <div class="row isi-permintaan my-2">
+    
+  </div>
+
+</section>
+
+<!-- /.content -->

@@ -1,0 +1,118 @@
+<!-- Main content -->
+<section class="content">
+    <!-- Modal -->
+    <!-- <div class="modal fade" id="sukses" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                </div>
+                <div class="modal-body">
+
+                    <i class="fa-solid fa-circle-check w-100 text-center" style="font-size: 50px;color:#28d094"></i>
+                    <label class="form-label w-100 fw-bold fs-2 text-center mb-3">PESAN SUKSES</label>
+                    <br>
+                    <label class="w-100 form-label fw-normal text-center mb-3">Sukses Tambah Tim Programmer</label>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="exampleModalLabel">Hapus Aplikasi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="/programmer/delete-Aplikasi">
+                        <div class="d-none">
+                            <div class="mb-3"><label class="form-label"><strong>ID APLIKASI</strong><br /></label><input id="id" name="id_aplikasi" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['id_tiket'] ?>" /></div>
+                            <!-- <div class="mb-3"><label class="form-label"><strong>ID TAHAPAN</strong><br /></label><input id="id" name="id_tahapan" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['id_tahapan'] ?>" /></div>
+                            <div class="mb-3"><label class="form-label"><strong>ID SUB TAHAPAN</strong><br /></label><input id="id_sub" name="id_sub_tahapan" class="form-control" type="text" style="border-radius: 10px;" /></div> -->
+                        </div>
+                        <div class="text-center mb-2">
+                            Apakah anda yakin ingin menghapus Aplikasi ini ?
+                        </div>
+                        <div class="d-flex align-items-end justify-content-center">
+                            <a class="btn text-white m-2" style="background-color: #34abbb;" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i> Batal</a>
+                            <button class="btn text-white m-2" style="background-color: red;"><i class="fa-regular fa-square-check"></i> Hapus</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="container-fluid">
+            <h3 class="text-dark mb-4">Daftar List Aplikasi</h3>
+            <div class="card shadow" style="border-bottom-right-radius: 15px;border-top-right-radius: 15px;border-top-left-radius: 15px;border-bottom-left-radius: 15px;">
+                <div class="card-header py-3" style="border-top-left-radius: 15px;border-top-right-radius: 15px;">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6 d-flex align-items-center">
+                            <p class="text-primary m-0 fw-bold">Macam-macam Aplikasi yang sudah terdaftar</p>
+                        </div>
+                        <div class="col-md-6 col-lg-6 d-flex align-items-center justify-content-end">
+                            <a class="btn text-white bg-primary" type="button" style="margin: 13px;" href="/programmer/tambah-aplikasi">Tambah Aplikasi</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+
+                    <div class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info" style="background: var(--bs-table-bg);border-radius: 10px;">
+                        <table class="table table-striped" id="aplikasi">
+                            <thead style="background: rgba(208,204,204,0.76);">
+                                <tr>
+                                    <th>Tanggal</th>
+                                    <th>Jam</th>
+                                    <th>Aplikasi</th>
+                                    <th>Status Aplikasi</th>
+                                    <th>Jenis Aplikasi</th>
+                                    <th>Developer</th>
+                                    <th>Pengelola</th>
+                                    <th class="text-center">Tindakan</th>
+                                </tr>
+                            </thead>
+                            <tbody style="background: rgba(231,231,231,0.64);" id="auto">
+
+                                <?php
+                                if ($this->data != null) {
+                                    foreach ($this->data as $data) {
+                                        echo "<tr>";
+
+                                        echo "<td>" . $data['tanggal'] . "</td>";
+                                        echo "<td>" . $data['jam'] . "</td>";
+                                        echo "<td>" . $data['aplikasi'] . "</td>";
+                                        echo "<td>" . $data['status_aplikasi'] . "</td>";
+                                        echo "<td>" . $data['jenis_aplikasi'] . "</td>";
+                                        echo "<td>" . $data['developer'] . "</td>";
+                                        echo "<td>" . $data['pengelola'] . "</td>";
+
+                                        echo "<td align='center'background: rgb(223,78,87);>";
+                                        echo "<a class='btn text-white' type='button' style='margin: 13px;background: rgb(53,168,184);' href='/programmer/edit-aplikasi/id_aplikasi/" . $data['id'] . "'>EDIT</a>";
+                                        echo "<a class='btn text-white delete-app bg-danger' type='button' data-id='" . $data['id'] . "' style='border-radius:3px' data-bs-toggle='modal' data-bs-target='#delete'>DELETE</a>";
+                                        echo "</td>";
+
+                                        echo "</tr>";
+                                    }
+                                }
+
+                                ?>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- /.content -->

@@ -1,0 +1,84 @@
+.accordion-button:not(.collapsed){
+        color: black;
+    }
+.checkbox{
+        width: 20px;
+        height: 20px;
+    }
+.ui-progressbar {
+  height: 1em;
+}
+
+
+.ui-progressbar-value {
+  background: rgb(43, 220, 233);
+}
+
+.progressbar-container {
+  position: relative;
+  border-radius: 10px;
+}
+
+.progressbar-bar {
+
+  margin: 10px 0;
+  border-radius: 7px;
+}
+
+
+
+
+
+
+/*! ini template */
+
+fieldset {
+  padding: .35em .75em .625em
+}
+
+legend {
+  box-sizing: border-box;
+  color: inherit;
+  display: table;
+  max-width: 100%;
+  padding: 0;
+  white-space: normal
+}
+
+progress {
+  vertical-align: baseline
+}
+
+textarea {
+  overflow: auto
+}
+
+[type=checkbox],
+[type=radio] {
+  box-sizing: border-box;
+  padding: 0
+}
+
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto
+}
+
+
+details {
+  display: block
+}
+
+summary {
+  display: list-item
+}
+
+template {
+  display: none
+}
+
+[hidden] {
+  display: none
+}
+
+/*#  */

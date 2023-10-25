@@ -1,0 +1,92 @@
+<div class="row">
+    <div class="col-lg-12 col-xxl-12">
+        <div class="card shadow " style="border-radius: 15px;">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-2 col-sm-6">
+                        <div class="mb-3"><label class="form-label"><strong>Nama</strong><br /></label><input id="email" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['nama'] ?>" disabled /></div>
+                    </div>
+                    <div class="col-md-2 col-sm-6">
+                        <div class="mb-3"><label class="form-label"><strong>Status Pengguna</strong><br /></label><input id="email" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['status'] ?>" disabled /></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card shadow" style="border-bottom-right-radius: 15px;border-top-right-radius: 15px;border-top-left-radius: 15px;border-bottom-left-radius: 15px;">
+    <div class="card-header py-3" style="border-top-left-radius: 15px;border-top-right-radius: 15px;">
+        <div class="row">
+            <div class="col-md-6">
+                <p class="text-primary m-0 fw-bold">Daftar Peran</p>
+            </div>
+            <div class="col-md-6 d-lg-flex justify-content-lg-end align-items-lg-center"><button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#modal-tambah-peran" id="button-tambah-peran" style="background: rgb(53,167,184);">Tambah Peran</button></div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive table" id="" role="grid" aria-describedby="dataTable_info" style="background: var(--bs-table-bg);border-radius: 10px;">
+            <table id="petugas" class="table table-striped">
+                <thead style="background: rgba(208,204,204,0.76);">
+                    <tr>
+                        <th>Id</th>
+                        <th class="">Peran</th>
+                        <th class="text-center">Tindakan</th>
+                    </tr>
+                </thead>
+                <tbody style="background: rgba(231,231,231,0.64);">
+                    <?php
+                    if (!$this->data['list+peran']) {
+                        # code...
+                    } else {
+                        foreach ($this->data['list+peran'] as $peran) {
+                            echo "<tr>";
+                            echo "<td>" . $peran['id'] . "</td>";
+                            echo "<td>" . $peran['peran'] . "</td>";
+                            echo "<td align='center'background: rgb(223,78,87);>";
+                            echo "<a class='btn btn-primary mx-2' type='button' style='background: rgb(225 16 36);' href='/admin/delete-peran/id_pengguna/" . $this->data['id_pengguna'] . "/id_peran/" . $peran['id'] . "'>Hapus</a>";
+                            //echo "<button class='btn btn-primary mx-2' type='button'data-toggle='modal' data-target='#modal-rating" . $tiket['nomor_tiket'] . "' id='button-rating' style='background-color:#34abbb'>Beri Nilai</button>";
+                            echo "</td>";
+                            echo "</tr>";
+                        }
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- MOdal rating  -->
+<div class="modal fade" id="modal-tambah-peran">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Tambah Peran</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-group" method="post" action="/admin/tambah-peran" >
+                    <input type="hidden" name="id_pengguna" value="<?= $this->data['id_pengguna'] ?>">
+                    <label>List Peran</label>
+                    <select class="select2" name="peran[]" multiple="multiple" data-placeholder="Pilih Petugas" style="width: 100%;">
+                        <?php
+                        foreach ($this->data['list_peran_pilihan'] as $data) {
+                            echo '<option value="' . $data['id'] . '">' . $data['nama_peran'] . '</option>';
+                            //if($data['id'] == $leaddetails[0]['city']){echo "selected";}
+                        }
+                        ?>
+                    </select>
+            </div>
+            <div class="modal-footer" style="border:0px">
+                <button type="submit" class="btn btn-primary">tambah Peran</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- End Modal rating -->
+<?// var_dump($this->data) ?>
+<?php //var_dump($this->pesan) ?>
+
+

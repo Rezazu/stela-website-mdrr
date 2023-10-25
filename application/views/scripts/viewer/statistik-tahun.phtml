@@ -1,0 +1,243 @@
+        
+  <div class="row">
+    <label class="col-md-2 d-flex align-items-center m-0"><strong>Pilih Tahun</strong></label>
+    <select class="w-100 col-md-2 tahunpilihtahun" data-placeholder="Pilih tahun" name="tahunpilihtahun" id="tahunpilihtahun">
+      <!-- <option value="">pilih tahun</option>
+      <option value="2022">2022</option>
+      <option value="2023">2023</option> -->
+      <?php
+      foreach ($this->data['list_tahun'] as $datatahun) {
+        echo '<option value="' . $datatahun . '">' . $datatahun . '</option>';
+     }
+      ?>
+    </select>
+  </div>
+
+<section class="content">
+  <div>
+    <h1 id="datatahunpilihan"> </h1>
+  </div>
+</section>
+<!-- kategori -->
+          <div class="col-md-12">
+            <div class="card card-info">
+              <div class="card-header">
+                <h3 class="card-title">Jumlah Tiket Berdasarkan Kategori</h3>
+
+                <div class="card-tools">
+                  
+                  <button type="button" class="btn btn-tool" data-card-widget="maximize">
+                    <i class="fas fa-expand"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+                <!-- /.card-tools -->
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <h6>Jumlah tiket berdasarkan kategori Tahun Ini   </h6>
+                <div class="row">
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-danger"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Singa Rusia</span>
+                        <span id="Singa-statistiktahun" class="info-box-number"></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-warning"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Internet & Jaringan</span>
+                        <span id="Internet-statistiktahun" class="info-box-number"></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-info"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Sistem Operasi</span>
+                        <span id="Sistem-statistiktahun" class="info-box-number"></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Software</span>
+                        <span id="Software-statistiktahun" class="info-box-number"></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-danger"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Hardware</span>
+                        <span id="Hardware-statistiktahun" class="info-box-number"></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-warning"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Aplikasi</span>
+                        <span id="Aplikasi-statistiktahun" class="info-box-number"></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Pengembangan Jaringan</span>
+                        <span id="Pengembangan-statistiktahun" class="info-box-number"></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-primary"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Lain-Lain</span>
+                        <span id="Lain-statistiktahun" class="info-box-number"></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Teleconference</span>
+                        <span id="Teleconference-statistiktahun" class="info-box-number"></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-danger"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">File Sharing dan Cloud</span>
+                        <span id="File-statistiktahun" class="info-box-number"></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-warning"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Undangan Rapat</span>
+                        <span id="Undangan-statistiktahun" class="info-box-number"></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Masuk Ruang Server</span>
+                        <span id="Masuk-statistiktahun" class="info-box-number"></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-primary"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Insiden</span>
+                        <span id="Insiden-statistiktahun" class="info-box-number"></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+
+                </div> 
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+<!-- kategori -->
+
+
+      
+
+        
+
+        
+
+
+<?php
+// foreach($this->data['week']['data'] as $data){
+// echo $data['petugas'];
+// };
+//var_dump($this->data[date("Y")][sub_kategori]);
+//var_dump($this->data[2022][sub_kategori]);
+// foreach($this->data[0] as $datatahun){
+//   echo $datatahun;
+// }
+//var_dump($this->data[1][date("Y")]['sub_kategori']['Singa Rusia']);
+?>
+
+

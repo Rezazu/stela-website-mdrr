@@ -1,0 +1,70 @@
+<?
+if (count($this->rows) > 0)
+{
+?>
+	<script type="text/javascript">
+	$(function() {
+		$("#myTable").tablesorter({widthFixed: true, widgets: ['zebra']})
+		.tablesorterPager({container: $("#pager"), positionFixed:false, size:40})
+		.tablesorterFilter({filterContainer: $("#filter-box"),
+			filterWaitTime: 500,
+			filterColumns: [0,1,2,3,4,5,6]});
+	});
+	</script>
+
+	<div class="tnav">
+	  <div id="pager" class="tablesorterPager">
+		<form>
+		   <img src="/css-ui/images/first.png" class="first"/>
+			 <img src="/css-ui/images/prev.png" class="prev"/>
+		   <input type="text" class="pagedisplay"/>
+		   <img src="/css-ui/images/next.png" class="next"/>
+		   <img src="/css-ui/images/last.png" class="last"/>
+		   <select class="pagesize">
+				<option value="10">10</option>
+				<option value="20">20</option>
+				<option value="30">30</option>
+				<option selected="selected" value="40">40</option>
+		   </select>
+			</form>
+		</div>
+		<div class="tablesearch">
+			Cari: <input name="filter" id="filter-box" value="" maxlength="30" size="17" type="text">
+		</div>       
+	</div>
+	<br/>
+
+	<table id="myTable" class="tablesorter" style="margin:auto;" width="100%">
+		 <thead>
+			 <tr>
+				<th>No.</th>
+				<th>No. Surat</th>
+				<th>Tanggal Surat</th>
+				<th>Asal Surat</th>
+				<th>Tujuan Surat</th>
+				<th>Perihal Surat</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php
+			$indeks = 1;
+			foreach($this->rows as $row)
+			{
+				echo "<tr>";
+				echo "<td>" . $indeks ."</td>";
+				echo "<td><a href='/" . $this->form . "/edit/id/". $row->id ."'>" . $row->nomor_surat . "</a></td>";
+				echo "<td>" . $this->FormatDate($row->tanggal_surat) . "</td>";
+				echo "<td>" . $row->asal_surat . "</td>";
+				echo "<td>" . $row->tujuan_surat . "</td>";
+				echo "<td>" . $row->perihal_surat . "</td>";
+				echo "</tr>";
+
+				$indeks++;
+			}
+			?>
+		 </tbody>
+	</table>
+<? } else { 
+	echo "Data tidak ditemukan!";
+}
+?>

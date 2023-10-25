@@ -1,0 +1,80 @@
+<!-- Main content -->
+<section class="content">
+
+    <div class="container">
+        <div class="container-fluid">
+            <h3 class="text-dark mb-4">Daftar Permintaan</h3>
+            <div class="card shadow" style="border-bottom-right-radius: 15px;border-top-right-radius: 15px;border-top-left-radius: 15px;border-bottom-left-radius: 15px;">
+                <div class="card-header py-3" style="border-top-left-radius: 15px;border-top-right-radius: 15px;">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6 ">
+                            <p class="text-primary m-0 fw-bold">List Permintaan Aplikasi</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+
+                    <div class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info" style="background: var(--bs-table-bg);border-radius: 10px;">
+                        <table class="table table-striped" id="permintaan-op">
+                            <thead style="background: rgba(208,204,204,0.76);">
+                                <tr>
+                                    <th>Tanggal</th>
+                                    <th>Jam</th>
+                                    <th>Kode Tiket</th>
+                                    <th>Status</th>
+                                    <th>Deskripsi</th>
+                                    <th>Dokumen</th>
+                                    <th>Leader</th>
+                                    <th class="text-center">Tindakan</th>
+                                </tr>
+                            </thead>
+                            <tbody style="background: rgba(231,231,231,0.64);" id="auto">
+
+                                <?php
+                                if ($this->data != null) {
+                                    foreach ($this->data as $data) {
+                                        echo "<tr>";
+                                        echo "<td align='center'>" . $data['tanggal'] . "</td>";
+                                        echo "<td align='center'>" . $data['jam'] . "</td>";
+                                        echo "<td align='center'>" . $data['no_tiket'] . "</td>";
+                                        echo "<td align='center'>";
+                                        if ($data['status'] == "Belum Ada Tindakan") {
+                                            echo "<a class='btn text-white' style='margin: 10px;background: #ffd405;pointer-events:none'>Belum ada Tindakan</a>";
+                                        } else if ($data['status'] == "Terverifikasi") {
+                                            echo "<a class='btn text-white' style='margin: 10px;background: #2ad095;pointer-events:none'>Diverifikasi</a>";
+                                        } else if ($data['status'] == "Dalam Revisi") {
+                                            echo "<a class='btn text-white' style='margin: 10px;background: #ff4949;pointer-events:none'>Dalam Revisi</a>";
+                                        } else if ($data['status'] == "Sudah Revisi") {
+                                            echo "<a class='btn text-white' style='margin: 10px;background: #007bff;pointer-events:none'>Sudah Direvisi</a>";
+                                        }
+                                        echo "</td>";
+                                        echo "<td>" . $data['deskripsi'] . "</td>";
+                                        echo "<td align='center'>";
+                                        if ($data['dokumen']) {
+                                            foreach ($data['dokumen'] as $i) {
+                                                echo '<div><a target="_blank" href="' . "/storage/index/dokumen-lampiran/{$i['doc_name']}/ext/{$i['ext']}" . '" ><i class="fa-regular fa-file fs-4 ms-2"></i></div>';
+                                            }
+                                        }
+                                        echo "</td>";
+                                        echo "<td>" . $data['leader_programmer'] . "</td>";
+
+                                        echo "<td align='center' background: rgb(223,78,87);>";
+                                        echo "<a class='btn btn-primary' type='button' style='margin: 13px;background: rgb(53,168,184);' href='/operator/permintaan/detail/" . $data[id] . "'>DETAIL</a>";
+
+                                        echo "</td>";
+                                        echo "</tr>";
+                                    }
+                                }
+                                ?>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- /.content -->

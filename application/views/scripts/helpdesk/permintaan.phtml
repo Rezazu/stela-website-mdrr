@@ -1,0 +1,151 @@
+
+      <div class="container-fluid">
+        <h5 class="text-dark">Daftar Permintaan</h5>
+        <div class="card shadow" style="border-bottom-right-radius: 15px;border-top-right-radius: 15px;border-top-left-radius: 15px;border-bottom-left-radius: 15px;">
+            <div class="card-header py-3" style="border-top-left-radius: 15px;border-top-right-radius: 15px;">
+                  <div class="row">
+                      <div class="col-md-6">
+                        <!-- <p class="text-primary m-0 fw-bold">Daftar Permintaan</p> -->
+                      <button type="button" class="btn btn-outline-primary" onClick="hideTableTiketDone();">Dalam Proses</button>
+                      <button type="button" class="btn btn-outline-primary" onClick="hideTableTiket();">Selesai</button>
+                      </div>
+                  </div>
+            </div> 
+            <div class="card-body" id="table-tiket">
+                <!-- <div class="table-responsive table mt-2" id="" role="" aria-describedby="dataTable_info" style="background: var(--bs-table-bg);border-radius: 10px;"> -->
+                    <table class="table table-striped" id="daftar-tiket">
+                        <thead style="background: rgba(208,204,204,0.76);">
+                            <tr>
+                                <!-- <th>Urgensi</th> -->
+                                <!-- <th>Jam</th> -->
+                                <th>id</th>
+                                <th>Tanggal</th>
+                                <th>Kategori</th>
+                                <th>Petugas</th>
+                                <th class="text-center">Tindakan</th>
+                            </tr>
+                        </thead>
+                        <tbody style="background: rgba(231,231,231,0.64);" id="auto"> 
+                            <?php
+                            //rsort($this->data);
+                            if ($this->data == null ) {
+                              # code...
+                            }else{
+		                        foreach($this->data as $data)
+		                        {if ($data['status']!=6) {
+                                    # code...
+                                    echo "<tr>";
+                                    //echo "<td>". $data['urgensi'] ."</td>";
+                                    echo "<td>". $data['id_tiket'] ."</td>";
+                                    echo "<td>". $data['tanggal'] ."</td>";
+                                    echo "<td>". $data['kategori'] ."</td>";
+    
+                                    if($data['petugas'])
+                                    {
+                                    echo"<td>";
+                                    foreach($data['petugas'] as $petugas){
+                                     echo  $petugas['nama']. "<br>";
+                                    }
+                                    echo "</td>";
+                                    }else{
+                                      echo "<td> </td>";
+                                    }
+                                    
+                                    if ($data['status'] < 6) {
+                                      echo "<td align='center'background: rgb(223,78,87);>";
+                                      echo "<a class='btn btn-primary' type='button' style='margin: 13px;background: rgb(53,168,184);' href='/helpdesk/permintaan/detail/".$data[id_tiket]."'>DETAIL</a>";
+                                      echo "</td>";
+                                      //var_dump($data['urgensi']);
+                                    }else{
+                                     echo "<td>". "</td>";
+                                    }
+                                          //echo "</td>";
+                                          echo "</tr>";
+                                      }}
+                                }
+		                          ?>
+                               
+                        </tbody>
+                    </table>
+                <!-- </div> -->
+            </div>
+            <div class="card-body" id="table-tiket-done">
+                <!-- <div class="table-responsive table mt-2" id="" role="" aria-describedby="dataTable_info" style="background: var(--bs-table-bg);border-radius: 10px;"> -->
+                    <table class="table table-striped" id="daftar-tiket-done">
+                        <thead style="background: rgba(208,204,204,0.76);">
+                            <tr>
+                                <!-- <th>Urgensi</th> -->
+                                <!-- <th>Jam</th> -->
+                                <th>id</th>
+                                <th>Tanggal</th>
+                                <th>Kategori</th>
+                                <th>Petugas</th>
+                                <th class="text-center">Tindakan</th>
+                            </tr>
+                        </thead>
+                        <tbody style="background: rgba(231,231,231,0.64);" id="auto"> 
+                            <?php
+                            //rsort($this->data);
+                            if ($this->data == null ) {
+                              # code...
+                            }
+                            else{
+		                        foreach($this->data as $data)
+		                        {if ($data['status']==6) {
+                                  # code...
+                                  echo "<tr>";
+                                  //echo "<td>". $data['urgensi'] ."</td>";
+                                echo "<td>". $data['id_tiket'] ."</td>";
+                                echo "<td>". $data['tanggal'] ."</td>";
+                                echo "<td>". $data['kategori'] ."</td>";
+                                if($data['petugas'])
+                                {
+                                echo"<td>";
+                                foreach($data['petugas'] as $petugas){
+                                 echo  $petugas['nama']. "<br>";
+                                }
+                                echo "</td>";
+                                }else{
+                                echo "<td> </td>";
+                                }
+                                
+//                                if ($data['status'] < 6) {
+                                  echo "<td align='center'background: rgb(223,78,87);>";
+                                  echo "<a class='btn btn-primary' type='button' style='margin: 13px;background: rgb(53,168,184);' href='/helpdesk/permintaan/detail/".$data[id_tiket]."'>DETAIL</a>";
+                                  echo "</td>";
+                                  //var_dump($data['urgensi']);
+//                                }else{
+//                                 echo "<td>". "</td>";
+//                                }
+		                          	//echo "</td>";
+		                          	echo "</tr>";
+		                          }}}
+		                          ?>
+                               
+                        </tbody>
+                    </table>
+                <!-- </div> -->
+            </div>
+        </div>
+    </div>
+
+    <?php 
+    //var_dump($data);
+    ?>
+
+  
+<script>
+  function hideTableTiketDone() {
+    tableTiketDone = document.getElementById('table-tiket-done');
+    tableTiketDone.style.display = 'none';
+    tableTiket = document.getElementById('table-tiket');
+    tableTiket.style.display = 'block';
+  }
+  function hideTableTiket() {
+    tableTiketDone = document.getElementById('table-tiket-done');
+    tableTiketDone.style.display = 'block';
+    tableTiket = document.getElementById('table-tiket');
+    tableTiket.style.display = 'none';
+  }
+hideTableTiketDone();
+</script>

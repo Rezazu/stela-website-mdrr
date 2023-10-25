@@ -1,0 +1,86 @@
+<!-- Main content -->
+<section class="content ">
+
+    <div class="container">
+        <div class="container-fluid">
+            <h3 class="text-dark mb-4">Edit Keterangan Aplikasi</h3>
+            <div class="card shadow" style="border-bottom-right-radius: 15px;border-top-right-radius: 15px;border-top-left-radius: 15px;border-bottom-left-radius: 15px;">
+                <div class="card-header py-3" style="border-top-left-radius: 15px;border-top-right-radius: 15px;">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12 ">
+                            <p class="text-primary m-0 fw-bold">Harap lengkapi input yang diperlukan, sebelum Anda mengklik tombol kirim</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form class="needs-validation" method="post" action="/programmer/proses-Edit-Aplikasi" novalidate>
+                        <div class="col">
+                            <div class="d-none">
+                                <div class="mb-3"><label class="form-label"><strong>ID</strong><br /></label><input id="id" name="id" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['id'] ?>" /></div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="validationApp" class="form-label"><strong>Aplikasi</strong><br /></label>
+                                <input id="validationApp" name="aplikasi" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['aplikasi'] ?>" required />
+                                <div class="invalid-feedback">
+                                    Tolong isi nama aplikasi!
+                                </div>
+                                <div class="valid-feedback">
+                                    Baik!
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label><strong>Status Aplikasi</strong></label>
+                                <select class="w-100" data-placeholder="Pilih Status" name="id_status_aplikasi">
+                                    <?php
+                                    foreach ($this->data['list_status_aplikasi'] as $data) {
+                                        echo '<option value="' . $data['id'] . '" ' . (($data['status_aplikasi'] == $this->data['status_aplikasi']) ? 'selected' : '') . '>' . $data['status_aplikasi'] . '</option>';
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label><strong>Jenis Aplikasi</strong></label>
+                                <select class="w-100" data-placeholder="Pilih Status" name="jenis_aplikasi">
+                                    <?php
+                                    foreach ($this->data['list_jenis_aplikasi'] as $key => $data) {
+                                        echo '<option value="' . $data . '" ' . (($data == $this->data['jenis_aplikasi']) ? 'selected' : '') . '>' . $data . '</option>';
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label><strong>Status Aplikasi</strong></label>
+                                <select class="w-100" data-placeholder="Pilih Status" name="developer">
+                                    <?php
+                                    foreach ($this->data['list_developer'] as $key => $data) {
+                                        echo '<option value="' . $data . '" ' . (($data == $this->data['developer']) ? 'selected' : '') . '>' . $data . '</option>';
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="validationPeng" class="form-label"><strong>Pengelola</strong><br /></label>
+                                <input for="validationPeng" id="pengelola" name="pengelola" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['pengelola'] ?>" required />
+                                <div class="invalid-feedback">
+                                    Tolong isi nama pengelola!
+                                </div>
+                                <div class="valid-feedback">
+                                    Baik!
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <button class="btn text-white m-2" style="background-color: #34abbb;"><i class="fa-regular fa-square-check"></i> Kirim</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- /.content -->

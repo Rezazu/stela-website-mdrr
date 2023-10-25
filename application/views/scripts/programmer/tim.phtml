@@ -1,0 +1,44 @@
+<!-- Main content -->
+<section class="content ">
+
+    <div class="container">
+        <div class="container-fluid">
+            <h3 class="text-dark mb-4">Tim Programmer</h3>
+            <div class="card shadow" style="border-bottom-right-radius: 15px;border-top-right-radius: 15px;border-top-left-radius: 15px;border-bottom-left-radius: 15px;">
+                <div class="card-header py-3" style="border-top-left-radius: 15px;border-top-right-radius: 15px;">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12 ">
+                            <p class="text-primary m-0 fw-bold">Harap lengkapi input yang diperlukan, sebelum Anda mengklik tombol kirim</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="/programmer/kirim-tim">
+                        <div class="col">
+                            <div class="d-none">
+                                <div class="mb-3"><label class="form-label"><strong>ID</strong><br /></label><input id="id" name="id_tim_programmer" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['id_tim_programmer'] ?>" /></div>
+                            </div>
+                            <div class="mb-3"><label class="form-label"><strong>Nama Tim Programmer</strong><br /></label><input id="tim" name='tim' class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['nama_tim'] ?>" disabled /></div>
+                            <div class="mb-3"><label class="form-label"><strong>Proyek</strong><br /></label><input id="pelapor" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['judul'] ?>" disabled /></div>
+                            <div class="mb-3">
+                                <label>Beri Tugas</label>
+                                <select class="select2" name="programmer[]" multiple="multiple" data-placeholder="Pilih Petugas" style="width: 100%;">
+                                    <?php
+                                    foreach ($this->data['list_programmer'] as $data) {
+                                        echo '<option value="' . $data['id'] . '">' . $data['nama'] . '</option>';
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <button class="btn text-white m-2" style="background-color: #34abbb;"><i class="fa-regular fa-square-check"></i> Kirim</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

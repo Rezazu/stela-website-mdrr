@@ -1,0 +1,101 @@
+<div class="container bg-white" style="border-radius:20px">
+    <form class="p-4 needs-validation" id="form" method="post" action="/tiket/success" enctype="multipart/form-data" novalidate onsubmit="myFunction()">
+        <h3 class="text-center fw-bold">Buat Tiket Baru</h3>
+        <div class="row" methode="post">
+
+            <div class="col-md-4 col-sm-12">
+                <div class="mb-3">
+                    <label class="form-label">Pelapor</label>
+                    <input type="text" class="form-control" id="pelapor" value="<?= $this->data['nama'] ?>" name="nama" disabled>
+                    <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Unit Kerja</label>
+                    <input type="text" class="form-control" id="unit_kerja" value="<?= $this->data['unit_kerja'] ?>" name="unit" disabled>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">HP</label>
+                    <input type="number" class="form-control" id="hp" value="<?= $this->data['hp'] ?>" disabled name="hp_pelapor">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" value="<?= $this->data['email'] ?>" disabled name="email_pelapor">
+                </div>
+            </div>
+            <div class="col-md-8 col-sm-12">
+                <div class="mb-3">
+                    <label class="form-label">Keterangan</label>
+                    <textarea class="form-control" id="alamat" rows="4" placeholder="Keterangan ...." name="keterangan" style="height: 125px;" required></textarea>
+                    <div class="invalid-feedback">
+                        Tolong isi keterangan!
+                    </div>
+                    <div class="valid-feedback">
+                        Baik!
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label class="form-label">Bagian</label>
+                            <input type="text" class="form-control" id="bagian" value="<?= $this->data['bagian'] ?>" name="jabatan" required>
+                            <div class="invalid-feedback">
+                                Tolong isi Bagian!
+                            </div>
+                            <div class="valid-feedback">
+                                Baik!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label class="form-label">Gedung</label>
+                            <input type="text" class="form-control" value="<?= $this->data['gedung'] ?>" id="gedung" name="gedung" required>
+                            <div class="invalid-feedback">
+                                Tolong isi Gedung!
+                            </div>
+                            <div class="valid-feedback">
+                                Baik!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label class="form-label">Lantai</label>
+                            <input type="number" class="form-control" value="<?= $this->data['lantai'] ?>" id="lantai" name="lantai" required>
+                            <div class="invalid-feedback">
+                                Tolong isi Lantai!
+                            </div>
+                            <div class="valid-feedback">
+                                Baik!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label class="form-label">Ruangan</label>
+                            <input type="text" class="form-control" value="<?= $this->data['ruangan'] ?>" id="ruangan" name="ruangan" required>
+                            <div class="invalid-feedback">
+                                Tolong isi Ruangan!
+                            </div>
+                            <div class="valid-feedback">
+                                Baik!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Lampirkan Dokumen</label>
+                    <input class="form-control" multiple="multiple" type="file" id="formFile" name="dokumen[]">
+                </div>
+
+            </div>
+
+        </div>
+        <div class="w-100 d-flex justify-content-end">
+            <button class="btn btn-primary" style="background-color: #34abbb;" id="submit">Buat Tiket</button>
+        </div>
+    </form>
+</div>

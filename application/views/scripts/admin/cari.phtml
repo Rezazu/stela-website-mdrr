@@ -1,0 +1,82 @@
+<script type="text/javascript">
+	function getStatus(id) {
+		url = "/admin/cari-data/";
+		jenis_surat = $("#jenis_surat").val();
+		nomor_surat = $("#nomor_surat").val();
+		asal_surat = $("#asal_surat").val();
+		tujuan_surat = $("#tujuan_surat").val();
+		perihal_surat = $("#perihal_surat").val();
+		seluruh_tanggal = $("#seluruh_tanggal").attr("checked");
+		if (seluruh_tanggal) {
+			tanggal_surat = "";
+		} else {
+			tanggal_surat = $("#tanggal_surat").val();
+		}
+
+		if (nomor_surat == "" && tanggal_surat == "" && asal_surat == "" && tujuan_surat == "" && perihal_surat == "")
+		{
+			alert("Anda harus memasukkan minimal satu variabel pencarian!");
+		} else {
+			$("#statusDiv").load(url,{'jenis_surat': jenis_surat, 'nomor_surat': nomor_surat, 'tanggal_surat': tanggal_surat, 'asal_surat': asal_surat, 'tujuan_surat': tujuan_surat, 'perihal_surat': perihal_surat});
+		}
+	}
+
+	$(function() {
+		$("#tanggal_surat").datepicker({yearRange:"-1:+0",changeYear:"true",changeMonth:"true",dateFormat:"dd-mm-yy"});
+		$("#seluruh_tanggal").click(function() {
+			if ($(this).is(':checked')) {
+				$("#tanggal_surat").attr("disabled", true);
+				$("#tanggal_surat").val("");
+			} else {
+				$("#tanggal_surat").attr("disabled", false);
+				$("#tanggal_surat").val("<?=date('d-m-Y');?>");
+			}
+		});
+	});
+</script>
+
+<div class="content-header"></div>
+<div class="UI_Header_Title">
+	<h1><img src="/images/normal.jpg" class="avatar image"/>  Pencarian Surat</h1>
+</div>
+<div class="clear"></div>
+<form id="compose" name="compose" method="post" action="" enctype="multipart/form-data">
+	<div class="tabular">
+		<p>			
+			<label for="jenis_surat">Jenis Surat :</label>				
+			<select id="jenis_surat" name="jenis_surat">
+				<option value="Surat Masuk Umum">Surat Masuk Umum</option>
+				<option value="Surat Masuk Anggota">Surat Masuk Anggota</option>
+				<option value="Surat Masuk Fraksi">Surat Masuk Fraksi</option>
+				<option value="Surat Masuk Internal">Surat Masuk Internal</option>
+				<option value="Surat Keluar">Surat Keluar</option>
+			</select>				
+		</p>
+		<p>				
+			<label for="nomor_surat">Nomor Surat :</label>
+			<input name="nomor_surat" id="nomor_surat" value="" type="text">				
+		</p>
+		<p>
+			<label for="tanggal_surat">Tanggal Surat :</label>					
+			<input name="tanggal_surat" id="tanggal_surat" value="" type="text" disabled>
+			<input type="checkbox" name="seluruh_tanggal" id="seluruh_tanggal" checked> Seluruh Tanggal				
+		</p>
+		<p>				
+			<label for="asal_surat">Asal Surat :</label>				
+			<input name="asal_surat" id="asal_surat" value="" type="text">				
+		</p>
+		<p>			
+			<label for="tujuan_surat">Tujuan :</label>				
+			<input name="tujuan_surat" id="tujuan_surat" value="" type="text">			
+		</p>			
+		<p>				
+			<label for="perihal_surat">Perihal :</label>				
+			<input name="perihal_surat" id="perihal_surat" value="" type="text">				
+		</p>
+
+		<p class="savecancel"><a href="#" onClick="getStatus();" class="UIbutton-small">Cari</a><a href="/admin/cari" class="UIbutton-small">Batal</a></p>
+	</div>
+</form>
+<div style="clear:both"></div>
+<hr/>
+<div id="statusDiv" name="statusDiv"></div>

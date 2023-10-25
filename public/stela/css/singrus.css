@@ -1,0 +1,13 @@
+.kotak-s:hover{
+    transform: scale(1.05);
+}
+.kotak-s{
+    transition: 0.5s;
+}
+.k-mati{
+    pointer-events: none;
+    filter: grayscale(1);
+}
+.list-group-item{
+    border: none !important;
+}

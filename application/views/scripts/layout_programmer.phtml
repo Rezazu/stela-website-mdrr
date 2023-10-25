@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- get 3 notif user session -->
+<?php
+$notif = null;
+if (Zend_Auth::getInstance()->hasIdentity())
+    $notif  = (new Dpr_NotifikasiService)->getDataWithLimit(Zend_Auth::getInstance()->getIdentity()->id, 3);
+?>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--    <title>AdminLTE 3 | Fixed Sidebar</title>-->
+    <title><?= $this->title ?></title>
+    <link rel="icon" href="/stela/assets/logo_singa.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="/stela/css/all.min.css">
+    <link rel="stylesheet" href="/stela/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stela/css/select2.min.css">
+    <!-- <link rel="stylesheet" href="/stela/css/jsgrid.min.css">
+    <link rel="stylesheet" href="/stela/css/jsgrid-theme.min.css"> -->
+    <link rel="stylesheet" href="/stela/css/adminlte.min.css">
+    <link rel="stylesheet" href="/stela/css/singrus.css">
+
+    <link rel="stylesheet" href="/stela/css/progres-bar.css">
+    <link rel='stylesheet' href="/stela/css/jquery-ui.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="/stela/css/tablecss/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="/stela/css/tablecss/datatables-responsive/css/responsive.bootstrap4.min.css">
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand" style="background: linear-gradient(90deg, #457B92 0%, #34ACBC 100%);">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+
+            </ul>
+
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <!-- Notifications Dropdown Menu -->
+                <li class="nav-item dropdown pt-2">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="far fa-bell"></i>
+                        <?php if ($notif) { ?>
+                            <span class="badge badge-danger navbar-badge">!</span>
+                        <?php } ?>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
+                        <h6 class="dropdown-header">Notifikasi</h6>
+                        <?php if ($notif) : foreach ($notif as $v) : ?>
+                                <?php if (!$v->dibaca) : ?>
+                                    <a class="dropdown-item d-flex align-items-center" href="/notifikasi/read-notifikasi/id_notif/<?= $v->id ?>/nomor_tiket/<?= $v->no_tiket ?>">
+                                    <?php else : ?>
+                                        <a class="dropdown-item d-flex align-items-center" style="background: rgb(220 230 233 / 42%);" href="/notifikasi/read-notifikasi/id_notif/<?= $v->id ?>/nomor_tiket/<?= $v->no_tiket ?>">
+                                        <?php endif ?>
+                                        <div class="me-3">
+                                            <div class="bg-primary icon-circle"><i class="fas fa-file-alt text-white"></i>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <span class="small text-gray-500"><?= $v->tanggal ?></span>
+                                            <p><?= $v->no_tiket ?> - <?= $v->keterangan ?></p>
+                                        </div>
+                                        </a>
+                                    <?php endforeach;
+                            else : ?>
+                                    <a class="dropdown-item d-flex align-items-center" href="#">
+                                        no data
+                                        <a>
+                                        <?php endif ?>
+                                        <a class="dropdown-item text-center small text-gray-500" href="/notifikasi/">Lihat Semua Notifikasi</a>
+                    </div>
+                </li>
+
+
+                <li class="nav-item dropdown no-arrow ">
+                    <a class="nav-item dropdown no-arrow" data-toggle="dropdown" href="#">
+                        <img class="border rounded-circle" width="50" height="50" src="<?= Zend_Auth::getInstance()->getIdentity()->profile ?>" />
+                    </a>
+                    <div class="dropdown-menu ">
+                        <a class="dropdown-item">
+                            <i class="fas fa-users "></i> <?= Zend_Auth::getInstance()->getIdentity()->nama_lengkap ?>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="/logout" class="dropdown-item">
+                            <i class="fas fa-file "></i> Logout
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item pt-2">
+                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.navbar -->
+
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar " style="background-color:#34ACBC;">
+            <!-- Brand Logo -->
+            <a href="/" class="w-100 d-flex align-items-center justify-content-center" style="background-color:#34ACBC">
+                <span class="brand-text">
+                    <img src="/stela/assets/logo_singa.png" width="100" height="67">
+                </span>
+            </a>
+            <!-- Sidebar Menu -->
+            <nav class="mt-2 sidebar ">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+                    <li class="nav-item">
+                        <a href="/programmer" class="nav-link text-light">
+                            <i class="nav-icon fas fa-house"></i>
+                            <p>
+                                Dashboard
+                            </p>
+                        </a>
+                    </li>
+                    <? if (Zend_Auth::getInstance()->getIdentity()->peran_aktif == 'programmer') {?>
+                    <li class="nav-item">
+                        <a href="/programmer/permintaan" class="nav-link text-light">
+                            <i class="nav-icon fas fa-clipboard-list"></i>
+                            <p>
+                                Daftar Permintaan
+                            </p>
+                        </a>
+                    </li>
+                    <? if ($this->developer == 'Internal') { ?>
+                        <li class="nav-item">
+                            <a href="/programmer/aplikasi" class="nav-link text-light">
+                                <i class="nav-icon fas fa-clipboard-list"></i>
+                                <p>
+                                    Aplikasi
+                                </p>
+                            </a>
+                        </li>
+                    <? }
+                    }?>
+
+                </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+    </aside>
+    <!-- Modal -->
+    <div class="modal fade" id="sukses" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                </div>
+                <div class="modal-body">
+
+                    <i class="fa-solid fa-circle-check w-100 text-center" style="font-size: 50px;color:#28d094"></i>
+                    <label class="form-label w-100 fw-bold fs-2 text-center mb-3">PESAN SUKSES</label>
+                    <br>
+                    <label class="w-100 form-label fw-normal text-center mb-3"><?= $_SESSION['flash'] ?></label>
+                    <!-- <div class="d-flex align-items-center justify-content-center">
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+                            </div> -->
+
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="kosong" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                </div>
+                <div class="modal-body">
+                    <i class="fa-solid fa-ban w-100 text-center" style="font-size: 50px;color:red"></i>
+                    <label class="form-label w-100 fw-bold fs-2 text-center mb-3">PESAN</label>
+                    <br>
+                    <label class="w-100 form-label fw-normal text-center mb-3"><?= $_SESSION['flash_error'] ?></label>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper pt-4 mt-5 pb-5">
+        <!-- Content Header (Page header) -->
+        <?= $this->layout()->content; ?>
+    </div>
+    <!-- /.content-wrapper -->
+
+    <footer class="main-footer text-center">
+        <strong>DPR RI 2022</strong>
+    </footer>
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+
+    <script src="/stela/js/jquery.min.js"></script>
+    <script src="/stela/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/stela/js/select2.full.min.js"></script>
+    <script src="/stela/js/adminlte.min.js"></script>
+    <script src="/stela/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/stela/js/jsgrid.min.js"></script>
+    <!-- <script src="/stela/js/operator.js"></script> -->
+    <script src="/stela/js/script.js"></script>
+    <script src="/stela/js/jquery-ui.min.js"></script>
+
+    <script src="/stela/js/table/datatables/jquery.dataTables.min.js"></script>
+    <script src="/stela/js/table/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/stela/js/table/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="/stela/js/table/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="/stela/js/table/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="/stela/js/table/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="/stela/js/table/jszip/jszip.min.js"></script>
+    <script src="/stela/js/table/pdfmake/pdfmake.min.js"></script>
+    <script src="/stela/js/table/pdfmake/vfs_fonts.js"></script>
+    <script src="/stela/js/table/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="/stela/js/table/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="/stela/js/table/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script>
+        function myFunction() {
+            const invalidForm = document.querySelector('form:invalid');
+            const submitBtn = document.getElementById('submit');
+            console.log(invalidForm)
+            if(invalidForm){
+                submitBtn.disabled = false;
+            }else {
+                submitBtn.setAttribute('disabled', true);
+            }
+        }
+    </script>
+    <script>
+        $(function() {
+            $('#programmer, #aplikasi').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+                // order: [
+                //     [0, 'desc']
+                // ],
+                "buttons": ["copy", "csv", "excel", "pdf", "print"]
+            }).buttons().container().appendTo('#programmer_wrapper .col-md-6:eq(0), #aplikasi_wrapper .col-md-6:eq(0)');
+
+        });
+    </script>
+
+    <script>
+        let sub = <?= json_encode($this->data['list_sub_tahapan']) ?>;
+        // console.log(sub)
+        let simpan = <?= json_encode($this->data['peran']) ?>;
+        let list = <?= json_encode($this->data['list_rekap']) ?>;
+        // console.log(list)
+        // console.log(simpan);
+    </script>
+
+    <script>
+        <? if (($_SESSION['flash_error'])) { ?>
+            $('#kosong').modal('show');
+        <? unset($_SESSION['flash_error']);
+        }
+        if ($_SESSION['flash']) { ?>
+            $('#sukses').modal('show');
+        <? unset($_SESSION['flash']);
+        } ?>
+    </script>
+
+    <script>
+        $(function() {
+            //Initialize Select2 Elements
+            $('.select2').select2()
+
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+                theme: 'bootstrap4'
+            })
+
+        })
+    </script>
+
+    <!-- notif -->
+    <script>
+        var audio = new Audio("/stela/assets/notif.mp3");
+
+        function playAudio() {
+            audio.autoplay = true;
+            audio.load();
+        }
+        var oldDatas = null;
+
+        function loadDoc() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    const datas = JSON.parse(this.response);
+
+                    if (!oldDatas) {
+                        oldDatas = datas;
+                    } else {
+                        datas.map(e => {
+                            let isSame = false;
+                            oldDatas.map(v => {
+                                if (e.id == v.id) isSame = true;
+                            })
+                            if (!isSame) {
+                                playAudio();
+                                $(document).Toasts('create', {
+                                    icon: 'fas fa-envelope fa-lg',
+                                    title: e.keterangan,
+                                    subtitle: e.no_tiket,
+                                    body: '<a class="directions-link" href="/notifikasi/read-notifikasi/id_notif/">Lihat Tiket</a>',
+                                })
+                                $("a.directions-link").attr("href", $("a.directions-link").attr("href") + e.id + '/nomor_tiket/' + e.no_tiket);
+                            }
+                        })
+                        oldDatas = datas;
+                    }
+                }
+            };
+            xhttp.open("GET", "/notifikasi/ajax", true);
+            xhttp.send();
+
+        }
+        //loadDoc();
+        setInterval(loadDoc, 1000);
+    </script>
+</body>
+
+</html>

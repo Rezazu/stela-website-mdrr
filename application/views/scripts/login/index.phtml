@@ -1,0 +1,93 @@
+<!-- <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> -->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Login</title>
+    <link rel="stylesheet" href="stela/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stela/css/all.min.css">
+    <link rel="stylesheet" href="stela/css/layout.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+
+
+
+    <?
+    $peran = Zend_Auth::getInstance()->getIdentity()->peran;
+    $username = Zend_Auth::getInstance()->getIdentity()->nama;
+    ?>
+</head>
+
+<body style="background: rgb(108, 203, 231);">
+
+    <section class="position-absolute overflow-hidden" style="z-index:-1">
+        <img src="stela/assets/logostela.png">
+        <section style="width: 100vw;height: 80vh !important;background: rgba(255,255,255,0.81);height: 102%;margin-left: 30%;border-top-left-radius: 120px;border-bottom-left-radius: 120px;"></section>
+    </section>
+    <div class="container">
+        <div class="row h-100 w-100 justify-content-center align-items-center">
+            <div class="col-md-9 col-lg-12 col-xl-10 col-xxl-12 offset-xxl-0">
+                <div class="row">
+                    <div class="col-lg-6 col-xl-6 col-xxl-7 offset-xxl-0 d-none d-lg-flex">
+                        <div class="d-xxl-inline-flex flex-grow-1 flex-sm-grow-1 bg-login-image" style="position: relative;background: url(&quot;stela/assets/iconlogin%20(1).png&quot;) center / contain no-repeat;"></div>
+                    </div>
+                    <div class="col-lg-6 col-xl-6 col-xxl-5 offset-xl-0 offset-xxl-0">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h2 class="text-dark mb-4 fw-bold">Selamat Datang, Ada yang bisa saya bantu?</h2>
+                            </div>
+                            <form class="user" method="post">
+                                <div class="mb-3">
+                                    <input class="form-control " type="email" id="email" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email" style="border-radius: 15px;">
+                                </div>
+                                <div class="mb-3">
+                                    <input class="form-control " type="password" id="password" placeholder="Password" name="password" style="border-radius: 15px;">
+                                </div>
+                                <div class="mb-3">
+                                    <div class="custom-control custom-checkbox small">
+                                        <div class="form-check"><input class="form-check-input custom-control-input" type="checkbox" id="formCheck-1">
+                                            <label class="form-check-label custom-control-label" for="formCheck-1">
+                                                Remember Me</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary d-block btn-user w-100" type="submit" id="" style="border-radius: 15px;">Login</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <script src="stela/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
+    <script src="stela/js/jquery-3.6.0.min.js"></script>
+    <script src="stela/js/script.js"></script>
+    <script src="/stela/js/sweetalert2.all.min.js"></script>
+    <!-- pesan  -->
+    <script>
+        <? if ($_SESSION['flash']) { ?>
+            Swal.fire(
+                'Good job!',
+                '<?= $_SESSION['flash'] ?>',
+                'success'
+            )
+        <? unset($_SESSION['flash']);
+        } elseif ($_SESSION['flash_error']) { ?>
+            Swal.fire(
+                'Gagal Login',
+                '<?= $_SESSION['flash_error'] ?>',
+                'warning'
+            )
+        <? unset($_SESSION['flash_error']);
+        } ?>
+    </script>
+</body>
+
+</html>

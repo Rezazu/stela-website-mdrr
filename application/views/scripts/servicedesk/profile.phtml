@@ -1,0 +1,74 @@
+<div class="row">
+      <div class="col-lg-12 col-xxl-12">
+        <div class="card shadow " style="border-radius: 15px;">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-2 col-sm-6">
+              <div class="mb-3"><label class="form-label">Nama<br /></label><input id="email" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['nama'] ?>" disabled /></div>
+              </div>
+              <div class="col-md-2 col-sm-6">
+              <div class="mb-3"><label class="form-label">Peran<br /></label><input id="email" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['peran'] ?>" disabled /></div>
+              </div>
+              <div class="col-md-2 col-sm-6">
+              <div class="mb-3"><label class="form-label">Status Petugas<br /></label><input id="email" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['status'] ?>" disabled /></div>
+              </div>
+              <div class="col-md-2 col-sm-6">
+              <div class="mb-3"><label class="form-label">Jumlah Tiket<br /></label><input id="email" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['jumlah_tiket'] ?>" disabled /></div>
+              </div>
+                <div class="col-md-2 col-sm-6">
+              <div class="mb-3"><label class="form-label">Tiket dengan Rating<br /></label><input id="email" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['jumlah_tiket_nilai'] ?>" disabled /></div>
+              </div>
+              <div class="col-md-2 col-sm-6">
+              <div class="mb-3"><label class="form-label">Poin<br /></label><input id="email" class="form-control" type="text" style="border-radius: 10px;" value="<?= round($this->data['jumlah_tiket'] * $this->data['rating'],2)?>" disabled /></div>
+              </div>
+              <div class="col-md-2 col-sm-6">
+              <div class="mb-3"><label class="form-label">Rating<br /></label><br>
+               <span class="starss" data-rating="<?= $this->data['rating']?>"data-num-stars="5"></span>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card shadow"  style="border-bottom-right-radius: 15px;border-top-right-radius: 15px;border-top-left-radius: 15px;border-bottom-left-radius: 15px;">
+        <!-- <div class="card-header py-3">
+            <p class="text-primary m-0 fw-bold">Daftar Petugas</p>
+        </div> -->
+        <div class="card-body">
+            <div class="table-responsive table" id="" role="grid" aria-describedby="dataTable_info" style="background: var(--bs-table-bg);border-radius: 10px;">
+                <table id="petugas" class="table table-striped">
+                    <thead style="background: rgba(208,204,204,0.76);">
+                        <tr>
+                            <th class="w-25">Tanggal</th>
+                            <th>Id Tiket</th>
+                            <th class="">No Tiket</th>
+                            <th class="text-center">Rating</th>
+                        </tr>
+                    </thead>
+                    <tbody style="background: rgba(231,231,231,0.64);">    
+                            <?php  
+                            if ($this->data== null) {
+                              # code...
+                            }else{
+		                          foreach($this-> data['tiket']as $tiket)
+		                          { echo"<tr>";
+		                            echo "<td>". $tiket['tanggal'] . "</td>";
+                                echo "<td>". $tiket['id_tiket'] . "</td>";
+                                echo "<td>". $tiket['nomor_tiket'] . "</td>";
+                                if ($tiket['rating'] == null) {
+                                  echo "<td></td>";
+                                }if ($tiket['rating'] != null) {
+                                  echo "<td align='center'>". "<span class='stars' data-rating='$tiket[rating]' data-num-stars='5' ></span>"."<br/></td>";
+                                
+                                }
+                                echo "</tr>";
+		                          }  }
+		                          ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+       

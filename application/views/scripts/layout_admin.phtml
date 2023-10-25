@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><?= $this->title ?></title>
+  <link rel="icon" href="/stela/assets/logostelatitle.png" type="image/x-icon">
+
+  <link rel="stylesheet" href="/stela/css/all.min.css">
+  <link rel="stylesheet" href="/stela/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/stela/css/select2.min.css">
+  <link rel="stylesheet" href="/stela/css/adminlte.min.css">
+  <link rel='stylesheet' href="/stela/css/rating.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="/stela/css/tablecss/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="/stela/css/tablecss/datatables-responsive/css/responsive.bootstrap4.min.css">
+
+  <!-- get 3 notif user session -->
+  <?php
+  $notif = null;
+  if (Zend_Auth::getInstance()->hasIdentity())
+    $notif  = (new Dpr_NotifikasiService)->getDataWithLimit(Zend_Auth::getInstance()->getIdentity()->id, 3);
+  ?>
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
+  <!-- Site wrapper -->
+  <div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand" style="background: linear-gradient(90deg, #457B92 0%, #34ACBC 100%);">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+
+      </ul>
+
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
+        <!-- Notifications Dropdown Menu -->
+        <li class="nav-item dropdown pt-2">
+          <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="far fa-bell"></i>
+            <?php if ($notif) { ?>
+              <span class="badge badge-danger navbar-badge">!</span>
+            <?php } ?>
+          </a>
+          <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
+            <h6 class="dropdown-header">Notifikasi</h6>
+            <?php if ($notif) : foreach ($notif as $v) : ?>
+                <?php if (!$v->dibaca) : ?>
+                  <a class="dropdown-item d-flex align-items-center" href="/notifikasi/read-notifikasi/id_notif/<?= $v->id ?>/nomor_tiket/<?= $v->no_tiket ?>">
+                  <?php else : ?>
+                    <a class="dropdown-item d-flex align-items-center" style="background: rgb(220 230 233 / 42%);" href="/notifikasi/read-notifikasi/id_notif/<?= $v->id ?>/nomor_tiket/<?= $v->no_tiket ?>">
+                    <?php endif ?>
+                    <div class="me-3">
+                      <div class="bg-primary icon-circle"><i class="fas fa-file-alt text-white"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <span class="small text-gray-500"><?= $v->tanggal ?></span>
+                      <p><?= $v->no_tiket ?> - <?= $v->keterangan ?></p>
+                    </div>
+                    </a>
+                  <?php endforeach;
+              else : ?>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    no data
+                    <a>
+                    <?php endif ?>
+                    <a class="dropdown-item text-center small text-gray-500" href="/notifikasi/">Lihat Semua Notifikasi</a>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown no-arrow ">
+          <a class="nav-item dropdown no-arrow" data-toggle="dropdown" href="#">
+            <img class="border rounded-circle" width="50" height="50" src="<?= Zend_Auth::getInstance()->getIdentity()->profile ?>" />
+          </a>
+          <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
+            <? if (Zend_Auth::getInstance()->getIdentity()->nama_lengkap != null) { ?>
+              <a class="dropdown-item" href="/servicedesk/profile">
+                <i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;<?= Zend_Auth::getInstance()->getIdentity()->nama_lengkap ?>
+              </a>
+            <? } ?>
+            <? if (Zend_Auth::getInstance()->getIdentity()->nama_lengkap == null) { ?>
+              <a class="dropdown-item" href="/login">
+                <i class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;login
+              </a>
+            <? } ?>
+            <? if (Zend_Auth::getInstance()->getIdentity()->nama_lengkap != null) { ?>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/logout">
+                <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout
+              </a>
+            <? } ?>
+          </div>
+        </li>
+        <li class="nav-item pt-2">
+          <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+            <i class="fas fa-expand-arrows-alt"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar " style="background-color:#34ACBC;">
+      <!-- Brand Logo -->
+      <a href="/" class="" style="background-color:#34ACBC">
+        <span class="brand-text pl-5"><img src="/stela/assets/logostela.png" width="152" height="67"></span>
+      </a>
+      <!-- Sidebar Menu -->
+      <nav class="mt-2 sidebar ">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item ">
+            <a href="/admin" class="nav-link text-light">
+              <i class="nav-icon fas fa-user-cog"></i>
+              <p>
+                Daftar Pengguna
+              </p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a href="/admin/daftar-petugas/" class="nav-link text-light">
+              <i class="nav-icon fas fa-user-cog"></i>
+              <p>
+                Daftar Petugas
+              </p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a href="/admin/tambah-pengguna/" class="nav-link text-light">
+              <i class="nav-icon fas fa-user-cog"></i>
+              <p>
+                Tambah Pengguna
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper pt-4 mt-5 pb-3">
+    <!-- Content Header (Page header) -->
+    <!-- Main content -->
+    <section class="content">
+      <?= $this->layout()->content; ?>
+    </section>
+    <!-- /.content -->
+  </div>
+  </div>
+  <!-- /.content-wrapper -->
+
+  <footer class="main-footer">
+
+    <strong>DPR RI 2022</strong>
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+  </div>
+  <!-- ./wrapper -->
+
+
+  <script src="/stela/js/jquery.min.js"></script>
+  <script src="/stela/js/statistikstela.js"></script>
+  <!-- <script src="/stela/bootstrap/js/bootstrap.min.js"></script> -->
+  <script src="/stela/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/stela/js/select2.full.min.js"></script>
+  <script src="/stela/js/adminlte.min.js"></script>
+  <script src="/stela/js/Chart.min.js"></script>
+  <script src="/stela/js/sweetalert2.all.min.js"></script>
+
+  <script src="/stela/js/table/datatables/jquery.dataTables.min.js"></script>
+  <script src="/stela/js/table/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="/stela/js/table/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="/stela/js/table/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+  <script src="/stela/js/table/datatables-buttons/js/dataTables.buttons.min.js"></script>
+  <script src="/stela/js/table/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+  <script src="/stela/js/table/jszip/jszip.min.js"></script>
+  <script src="/stela/js/table/pdfmake/pdfmake.min.js"></script>
+  <script src="/stela/js/table/pdfmake/vfs_fonts.js"></script>
+  <script src="/stela/js/table/datatables-buttons/js/buttons.html5.min.js"></script>
+  <script src="/stela/js/table/datatables-buttons/js/buttons.print.min.js"></script>
+  <script src="/stela/js/table/datatables-buttons/js/buttons.colVis.min.js"></script>
+  <script>
+        function myFunction() {
+            const invalidForm = document.querySelector('form:invalid');
+            const submitBtn = document.getElementById('submit');
+            console.log(invalidForm)
+            if(invalidForm){
+                submitBtn.disabled = false;
+            }else {
+                submitBtn.setAttribute('disabled', true);
+            }
+        }
+    </script>
+  <!-- notif -->
+  <script>
+    var audio = new Audio("/stela/assets/notif.mp3");
+
+    function playAudio() {
+      audio.autoplay = true;
+      audio.load();
+    }
+    var oldDatas = null;
+
+    function loadDoc() {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          const datas = JSON.parse(this.response);
+
+          if (!oldDatas) {
+            oldDatas = datas;
+          } else {
+            datas.map(e => {
+              let isSame = false;
+              oldDatas.map(v => {
+                if (e.id == v.id) isSame = true;
+              })
+              if (!isSame) {
+                playAudio();
+                $(document).Toasts('create', {
+                  icon: 'fas fa-envelope fa-lg',
+                  title: e.keterangan,
+                  subtitle: e.no_tiket,
+                  body: '<a class="directions-link" href="/notifikasi/read-notifikasi/id_notif/">Lihat Tiket</a>',
+                })
+                $("a.directions-link").attr("href", $("a.directions-link").attr("href") + e.id + '/nomor_tiket/'+e.no_tiket);
+              }
+            })
+            oldDatas = datas;
+          }
+        }
+      };
+      xhttp.open("GET", "/notifikasi/ajax", true);
+      xhttp.send();
+
+    }
+    //loadDoc();
+    setInterval(loadDoc, 1000);
+  </script>
+  <!-- bintang -->
+  <script>
+    $(function() {
+      $('.stars').stars();
+    });
+    $.fn.stars = function() {
+      return $(this).each(function() {
+        const rating = $(this).data("rating");
+        const numStars = $(this).data("numStars");
+        const fullStar = '<i class="fas fa-star" style="color:#FD841F"></i>'.repeat(Math.floor(rating));
+        const halfStar = (rating % 1 !== 0) ? '<i class="fas fa-star-half-alt" style="color:#FD841F"></i>' : '';
+        const noStar = '<i class="far fa-star" style="color:#FD841F"></i>'.repeat(Math.floor(numStars - rating));
+        $(this).html(`${fullStar}${halfStar}${noStar}`);
+      });
+    }
+
+    $(function() {
+      $('.starss').starss();
+    });
+    $.fn.starss = function() {
+      return $(this).each(function() {
+        const rating = $(this).data("rating");
+        const numStars = $(this).data("numStars");
+        const fullStar = '<i class="fas fa-star fa-xl" style="color:#FD841F"></i>'.repeat(Math.floor(rating));
+        const halfStar = (rating % 1 !== 0) ? '<i class="fas fa-star-half-alt fa-xl" style="color:#FD841F"></i>' : '';
+        const noStar = '<i class="far fa-star fa-xl" style="color:#FD841F"></i>'.repeat(Math.floor(numStars - rating));
+        $(this).html(`${fullStar}${halfStar}${noStar}`);
+      });
+    }
+  </script>
+  <!-- datatable -->
+  <script>
+    $(function() {
+      $("#daftar-tiket").DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        // "search": {
+        //   "search": "done"
+        //   },
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+        order: [
+          [0, 'desc']
+        ],
+        "columnDefs": [{
+          "visible": false,
+          "targets": 0
+        }],
+        "buttons": ["copy", "csv", "excel", "pdf", "print"],
+      }).buttons().container().appendTo('#daftar-tiket_wrapper .col-md-6:eq(0)');
+    });
+    $(function() {
+      $("#daftar-tiket-done").DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        // "search": {
+        //   "search": "done"
+        //   },
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+        order: [
+          [0, 'desc']
+        ],
+        "columnDefs": [{
+          "visible": false,
+          "targets": 0
+        }],
+        "buttons": ["copy", "csv", "excel", "pdf", "print"],
+      }).buttons().container().appendTo('#daftar-tiket-done_wrapper .col-md-6:eq(0)');
+    });
+    $(function() {
+      $('#petugas').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+        // order: [
+        //     [0, 'desc']
+        // ],
+        "buttons": ["copy", "csv", "excel", "pdf", "print"]
+      }).buttons().container().appendTo('#petugas_wrapper .col-md-6:eq(0)');
+    });
+    $(function() {
+      $('#log').DataTable({
+        "paging": false,
+        "lengthChange": false,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+        order: [
+          [0, 'asc']
+        ],
+        "columnDefs": [{
+          "visible": false,
+          "targets": 0
+        }],
+        "buttons": ["copy", "csv", "excel", "pdf", "print"]
+      }).buttons().container().appendTo('#log_wrapper .col-md-6:eq(0)');
+    });
+  </script>
+  <!-- select  -->
+  <script>
+    $(function() {
+      //Initialize Select2 Elements
+      $('.select2').select2()
+      //Initialize Select2 Elements
+      $('.select2bs4').select2({
+        theme: 'bootstrap4'
+      })
+    })
+  </script>
+  <!-- pesan  -->
+  <script>
+    <? if ($_SESSION['flash']) { ?>
+      Swal.fire(
+        'Good job!',
+        '<?= $_SESSION['flash'] ?>',
+        'success'
+      )
+    <? unset($_SESSION['flash']);
+    } ?>
+  </script>
+  <!-- validation -->
+  <script>
+    $(document).ready(function() {
+      (function() {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+          .forEach(function(form) {
+            form.addEventListener('submit', function(event) {
+              if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+              }
+
+              form.classList.add('was-validated')
+            }, false)
+          })
+      })()
+    });
+  </script>
+</body>
+
+</html>

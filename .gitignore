@@ -1,0 +1,9 @@
+.idea
+application/storage/dokumen_lampiran/*
+application/storage/tiket_image_laporan/*
+application/storage/todo_list_dokumen/*
+application/controllers/TestJenisDokumencontroller.php
+application/controllers/TestStatusAplikasicontroller.php
+application/controllers/TestProgrammerExternalcontroller.php
+application/controllers/TestAplikasiController.php
+library/Dpr/ValidateService.php

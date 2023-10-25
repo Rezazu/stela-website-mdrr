@@ -1,0 +1,32 @@
+.rating {
+  border: none;
+  float: left;
+}
+
+.rating > label {
+  float: right;
+}
+
+.rating > label:before {
+  content: url("/stela/assets/starsebelum.png");
+  display: inline-block;
+}
+
+.rating > input {
+  display: none;
+}
+
+.rating > input:checked ~ label,
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+
+  content: url("/stela/assets/star.png");
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label,
+.rating > input:checked ~ label:hover ~ label {
+
+  content: url("/stela/assets/star.png");
+}

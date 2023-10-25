@@ -1,0 +1,52 @@
+
+    <div class="card shadow"  style="border-bottom-right-radius: 15px;border-top-right-radius: 15px;border-top-left-radius: 15px;border-bottom-left-radius: 15px;">
+    <div class="card-header py-3" style="border-top-left-radius: 15px;border-top-right-radius: 15px;">
+        <div class="row">
+            <div class="col-md-6">
+                <p class="text-primary m-0 fw-bold">Daftar Pengguna</p>
+            </div>
+            <div class="col-md-6 d-lg-flex justify-content-lg-end align-items-lg-center"><a href="/admin/tambah-pengguna" class="btn btn-secondary" type="button"  style="background: rgb(53,167,184);">Tambah Pengguna</a></div>
+        </div>
+    </div>
+        <div class="card-body">
+            <div class="table-responsive table" id="" role="grid" aria-describedby="dataTable_info" style="background: var(--bs-table-bg);border-radius: 10px;">
+                <table id="petugas" class="table table-striped">
+                    <thead style="background: rgba(208,204,204,0.76);">
+                        <tr>
+                            <th class="text-center">ID Pengguna</th>
+                            <th class="text-center">Nama</th>
+                            <th class="text-center">Status</th>
+                            <th class="text-center">List Peran</th>
+                            <th class="text-center">Tindakan</th>
+                        </tr>
+                    </thead>
+                    <tbody style="background: rgba(231,231,231,0.64);">    
+                            <?php  
+                            if ($this->data == null) {
+                              # code...
+                            }else{
+		                          foreach($this->data as $data)
+		                          { echo"<tr>";
+		                        echo "<td align='center'>". $data['id_pengguna'] . "</td>";
+                                echo "<td>". $data['nama'] . "</td>";
+                                echo "<td align='center'>". $data['status'] . "</td>";
+                                echo "<td align='center'>" ;
+                                    if ($data['list_peran']) {
+                                        foreach ($data['list_peran'] as $peran) {
+                                            echo $peran['peran']."<br>";
+                                        }
+                                    }
+                                echo "</td>";
+                                echo "<td align='center'background: rgb(223,78,87);>";
+                                echo "<a class='btn btn-secondary' type='button' style='margin: 13px;background: rgb(53,168,184);' href='/admin/detail/id/".$data['id_pengguna']."'>DETAIL</a>";
+                                echo "<a class='btn btn-danger' type='button' style='margin: 13px;background: #dc3545;' href='/admin/delete-pengguna/id/".$data['id_pengguna']."'>HAPUS</a>";
+                                echo "</td>";
+                                
+                                echo "</tr>";
+		                          }  }
+		                          ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

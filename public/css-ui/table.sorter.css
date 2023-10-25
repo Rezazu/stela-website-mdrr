@@ -1,0 +1,29 @@
+table.tablesorter .expand {width:20px;  background: url(/css-ui/images/expand.png);  }
+table.tablesorter { margin-top:0; font-size: 11px; }
+table.tablesorter th {text-align: left; padding: 3px; }
+table.tablesorter td {vertical-align:top; font-weight:bold; color: rgb(84,73,48);padding: 0;padding:6px 10px 6px 10px;}
+table.tablesorter .container { padding-top:5px; padding-bottom:5px; background:#7d7155; color:rgb(240,240,210);}
+table.tablesorter .even {background: #fff;}
+table.tablesorter .odd {background: #eaebff;}
+table.tablesorter .top {background: #B7BAFF;}
+table.tablesorter .header {	background-image: url(/css-ui/images/bgarrow.png);	background-repeat: no-repeat;
+		padding-left: 30px;	padding-top: 7px;	padding-bottom:4px; height: auto; color:#544930;
+}
+table.tablesorter .headerSortUp {	background-image: url(/css-ui/images/asc.gif);background-repeat: no-repeat;}
+table.tablesorter .headerSortDown {	background-image: url(/css-ui/images/desc.gif);	background-repeat: no-repeat;}
+
+.tablesearch {width:180px; position:relative; padding-top:5px; margin-left:20px; float:right; background:#d3d6ff;}
+
+.tablesorterPager{padding-bottom:4px; padding-top:5px;float:left; width:230px;position:relative;text-align:center;background:rgb(206,106,57);}
+.tablesorterPager span {padding: 0 0 0 0;}
+.tablesorterPager ul{clear:both;list-style:none;}
+.tablesorterPager ul li {float:left;list-style:none;display:block;margin:5px; }
+.tablesorterPager img {cursor:pointer;}
+.tablesorterPager input.prev {width:auto;margin:auto; margin-right: 10px;}
+.tablesorterPager input.next {width:auto;margin:auto; margin-left:10px;}
+.tablesorterPager input {font-size:10px;width:50px; margin:auto;  border:1px solid #BEBEBE;text-align:center;}
+.tablesorterPager select{font-size:10px;width:50px; margin:auto;  border:1px solid #BEBEBE;text-align:center;}
+
+.tnav{clear:both; background:#d3d6ff; height:32px; width:100%; margin-left:2px;}
+
+table.tablesorter tfoot {	background-image: url(/css-ui/images/bgarrowfooter.png); }

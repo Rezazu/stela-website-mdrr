@@ -1,0 +1,257 @@
+        
+  <div class="row">
+    <label class="col-md-2 d-flex align-items-center m-0"><strong>Pilih Tahun</strong></label>
+    <select class="w-100 col-md-2 tahunpilih" data-placeholder="Pilih tahun" name="tahunpilih" id="tahunpilih">
+      <?php
+      foreach ($this->data['list_tahun'] as $datatahun) {
+        echo '<option value="' . $datatahun . '">' . $datatahun . '</option>';
+     }
+      ?>
+    </select>
+    <label class="col-md-2 d-flex align-items-center m-0"><strong>Pilih Bulan</strong></label>
+    <select class="w-100 col-md-2 bulanpilih" data-placeholder="Pilih bulan" name="bulanpilih" id="bulanpilih">
+      <option disabled>Pilih bulan</option>
+      <option value="Januari">Januari</option>
+      <option value="Februari">Februari</option>
+      <option value="Maret">Maret</option>
+      <option value="April">April</option>
+      <option value="Mei">Mei</option>
+      <option value="Juni">Juni</option>
+      <option value="Juli">Juli</option>
+      <option value="Agustus">Agustus</option>
+      <option value="September">September</option>
+      <option value="Oktober">Oktober</option>
+      <option value="November">November</option>
+      <option value="Desember">Desember</option>
+    </select>
+  </div>
+
+<section class="content">
+  <div>
+    <h1 id="datatahunpilihan"> </h1>
+  </div>
+</section>
+<!-- kategori -->
+          <div class="col-md-12">
+            <div class="card card-info ">
+              <div class="card-header">
+                <h3 class="card-title">Jumlah Tiket Berdasarkan Kategori</h3>
+
+                <div class="card-tools">
+                  
+                  <button type="button" class="btn btn-tool" data-card-widget="maximize">
+                    <i class="fas fa-expand"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+                <!-- /.card-tools -->
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <h6>Jumlah tiket berdasarkan kategori Tahun Ini   </h6>
+                <div class="row">
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-danger"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Singa Rusia</span>
+                        <span id="Singa-statistikbulan" id="singarusia-statistikbulan" class="info-box-number"></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-warning"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Internet & Jaringan</span>
+                        <span id="Internet-statistikbulan" class="info-box-number"></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-info"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Sistem Operasi</span>
+                        <span id="Sistem-statistikbulan" class="info-box-number"></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Software</span>
+                        <span id="Software-statistikbulan" class="info-box-number"></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-danger"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Hardware</span>
+                        <span id="Hardware-statistikbulan" class="info-box-number"></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-warning"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Aplikasi</span>
+                        <span id="Aplikasi-statistikbulan" class="info-box-number"></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Pengembangan Jaringan</span>
+                        <span id="Pengembangan-statistikbulan" class="info-box-number"></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-primary"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Lain-Lain</span>
+                        <span id="Lain-statistikbulan" class="info-box-number"></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Teleconference</span>
+                        <span id="Teleconference-statistikbulan" class="info-box-number"></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-danger"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">File Sharing dan Cloud</span>
+                        <span id="File-statistikbulan" class="info-box-number"></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-warning"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Undangan Rapat</span>
+                        <span id="Undangan-statistikbulan" class="info-box-number"></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-success"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Masuk Ruang Server</span>
+                        <span id="Masuk-statistikbulan" class="info-box-number"></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-2 col-sm-6 col-12">
+                    <div class="info-box">
+                      <span style="width:38px;" class="info-box-icon bg-primary"><i class="fa-solid fa-ticket"></i></span>
+  
+                      <div class="info-box-content">
+                        <span class="info-box-text">Insiden</span>
+                        <span id="Insiden-statistikbulan" class="info-box-number"></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+
+                </div> 
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+<!-- kategori -->
+
+
+      
+
+        
+
+        
+
+
+<?php
+// foreach($this->data['week']['data'] as $data){
+// echo $data['petugas'];
+// };
+//var_dump($this->data[date("Y")][sub_kategori]);
+//var_dump($this->data[1]['All'][sub_kategori]);
+// foreach($this->data[0] as $datatahun){
+//   echo $datatahun;
+// }
+//var_dump($this->data);
+//var_dump($this->data[1][date("Y")]['sub_kategori']['Singa Rusia']);
+?>
+
+

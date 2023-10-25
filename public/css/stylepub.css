@@ -1,0 +1,88 @@
+html { border: 0pt none ; margin: 0pt; padding: 0pt; outline-color: -moz-use-text-color; outline-style: none; outline-width: 0pt; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline; }
+div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p { border: 0pt none ; margin: 0pt; padding: 0pt; outline-color: -moz-use-text-color; outline-style: none; outline-width: 0pt; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline; }
+pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd { border: 0pt none ; margin: 0pt; padding: 0pt; outline-color: -moz-use-text-color; outline-style: none; outline-width: 0pt; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline; }
+s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd { border: 0pt none ; margin: 0pt; padding: 0pt; outline-color: -moz-use-text-color; outline-style: none; outline-width: 0pt; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline; }
+li, fieldset, form, label, legend { border: 0pt none ; margin: 0pt; padding: 0pt; outline-color: -moz-use-text-color; outline-style: none; outline-width: 0pt; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline; }
+body { background: #DCE9F6 url('../images/gradient-blue-top.png') repeat-x; font-family: Verdana,Arial,Geneva,Helvetica,sans-serif; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; font-size: 12px; color: rgb(51, 51, 51); position: relative; line-height: 1.2em;}
+#footer { padding: 8px 0pt; text-align: center; color: rgb(136, 136, 136); font-size: 10px; font-family: Verdana; }
+.frame #footer { padding: 8px 0pt 10px; clear: both; float:none!important; height: 18px; font-size: 10px; text-align: center; position: relative; line-height: 1.2em; }
+
+.clear, .clearboth { clear: both; }
+.float-left, .left { float: left; }
+.float-right, .right { float: right; }
+a { color: rgb(0, 102, 153); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.frame { min-width: 360px; -webkit-box-shadow: rgba(0,0,0,.4) 0 3px 20px;
+	-moz-box-shadow: rgba(0,0,0,.4) 0 3px 20px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border: 1px solid white;
+	background-color: #fff;}
+.frame .frame_top { height: 119px; padding-top: 12px; position: relative; }
+.frame .frame_top .corners_left, .frame .frame_top .corners_right { position: absolute; width: 156px; height: 119px; }
+.frame .frame_top .corners_left { background: transparent url('') no-repeat scroll 0% 0%; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; top: 0pt; left: 0pt; }
+.frame .frame_top .corners_right { background: transparent url('') no-repeat scroll 0% 0%; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; top: 0pt; right: 0pt; }
+.frame .frame_top a.inner { display:block;margin: 0pt 30px; background: rgb(0, 181, 221) url('../images/top_watermark.png') no-repeat scroll 0% 0%; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; width:368px;height: 82px; position: relative; z-index: 101; }
+.frame .frame_top .inner h2 { padding-top: 45px; padding-left: 12px; padding-bottom: 5px; font-size: 18px; color: rgb(255, 255, 255); font-family: Verdana; font-weight: bold; }
+.frame .frame_content { margin: -37px 22px 0px; padding: 20px 20px 0pt; background-color: rgb(255, 255, 255); position: relative; z-index: 101; min-height: 79px; }
+.frame .frame_bottom { height: 119px; position: relative; margin-top: -99px; }
+.frame .frame_bottom .corners_left, .frame .frame_bottom .corners_right { position: absolute; width: 191px; height: 119px; }
+.frame .frame_bottom .corners_left { background: transparent url('') no-repeat scroll 0% 0%; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; bottom: 0pt; left: 3px; }
+.frame .frame_bottom .corners_right { background: transparent url('') no-repeat scroll 0% 0%; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; bottom: 0pt; right: 3px; }
+.frame .frame_bottom .inner { margin: 0pt 30px; background-color: rgb(255, 255, 255); height: 106px; }
+.flash_boxes { margin: 0pt; line-height: 1.25em; color: rgb(51, 51, 51); font-family: Verdana; font-size: 12px; }
+.flash_boxes a { color: rgb(0, 102, 153); white-space: nowrap; }
+.flash_boxes a:hover { text-decoration: underline; }
+.flash_boxes > p, .flash_boxes > div { border: 1px solid rgb(182, 199, 211); padding: 10px 0pt 10px 36px; background-color: rgb(221, 235, 237); }
+.flash_boxes dt { margin-top: 10px; }
+.flash_boxes .notice, .flash_boxes .error { background-repeat: no-repeat; background-position: 10px 13px; padding-right: 10px; }
+.flash_boxes .notice { background-image: url('notice.png'); }
+
+.onboard_page { margin: 0px auto; min-width: 600px; }
+.onboard_page #browser_warning { margin: 10px auto; width: 600px; }
+.onboard_page a { line-height: 1.1em; }
+.onboard_page .logo { margin-left: 35px; margin-bottom: 10px; width: 291px; height: 28px; text-indent: -99999px; display: block; background-image: url('logo_full.png'); background-repeat: no-repeat; }
+.onboard_page form.onboard_form input[type="text"], .onboard_page form.onboard_form input[type="password"], .input_disable { font-size: 18px; color: rgb(51, 51, 51); width: 333px; padding-left: 3px; }
+.input_disable {border:1px solid #ddd; border-top-color:#999; padding:5px 3px}
+.onboard_page form.onboard_form .field { margin-bottom: 15px; }
+.onboard_page form.onboard_form .field label { color: rgb(153, 153, 153); font-size: 12px; }
+.onboard_page form.onboard_form .field.text_field label { display: block; margin-bottom: 5px; padding-left: 2px; }
+.onboard_page form.onboard_form .field.check_box_field { margin-bottom: 5px; }
+.onboard_page form.onboard_form .actions { text-align: right; margin-top: -10px; margin-bottom: 10px; }
+.onboard_page .onboard_actions { color: rgb(153, 153, 153); font-size: 11px; padding-bottom: 10px; margin-right: -3px; margin-left: -3px; }
+.onboard_page .onboard_actions a { font-size: 12px; }
+.onboard_page .login_page { margin: 50px auto 0pt; width: 425px; }
+
+
+.UIbutton {
+	-khtml-border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	background:#87B500 url(../images/button_bg.png) repeat-x scroll center top;
+	border-color:#DDDDDD #689300 #689300 #DDDDDD;
+	border-style:solid;
+	border-width:0 1px 1px 0;
+	color:#FFFFFF;
+	cursor:pointer;
+	font-size: 13px; font-weight: bold;
+	height:30px;
+	line-height:30px;
+	margin:0;
+	overflow:visible;
+	padding:0 15px;
+	text-shadow: 0pt -1px 1px rgba(0, 0, 0, 0.25);
+}
+
+#notices {
+	float: left;
+	clear: both;
+	background: #ffffdd;
+	padding: 12px 20px 10px 20px;
+	margin: 50px 80px 0 171px;
+	width: 498px;	
+	-webkit-box-shadow: rgba(0,0,0,.4) 0 3px 20px;
+	-moz-box-shadow: rgba(0,0,0,.4) 0 3px 20px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border: 1px solid white;
+}

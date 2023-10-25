@@ -1,0 +1,77 @@
+<!-- Main content -->
+<section class="content">
+    <!-- Modal -->
+    <!-- <div class="modal fade" id="sukses" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                </div>
+                <div class="modal-body">
+
+                    <i class="fa-solid fa-circle-check w-100 text-center" style="font-size: 50px;color:#28d094"></i>
+                    <label class="form-label w-100 fw-bold fs-2 text-center mb-3">PESAN SUKSES</label>
+                    <br>
+                    <label class="w-100 form-label fw-normal text-center mb-3">Sukses Tambah Tim Programmer</label>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="container">
+        <div class="container-fluid">
+            <h3 class="text-dark mb-4">Daftar <?=$this->tahapan?></h3>
+            <div class="card shadow" style="border-bottom-right-radius: 15px;border-top-right-radius: 15px;border-top-left-radius: 15px;border-bottom-left-radius: 15px;">
+                <div class="card-header py-3" style="border-top-left-radius: 15px;border-top-right-radius: 15px;">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6 ">
+                            <p class="text-primary m-0 fw-bold">List <?=$this->tahapan?> <?=$this->developer?> <?=$this->tahun?></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+
+                    <div class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info" style="background: var(--bs-table-bg);border-radius: 10px;">
+                        <table class="table table-striped" id="programmer">
+                            <thead style="background: rgba(208,204,204,0.76);">
+                                <tr>
+                                    <th>Tanggal</th>
+                                    <th>Jam</th>
+                                    <th>No Tiket</th>
+                                    <th>Aplikasi</th>
+                                    <th>Leader</th>
+                                    <th>Jenis Aplikasi</th>
+                                    <th>Keterangan</th>
+                                </tr>
+                            </thead>
+                            <tbody style="background: rgba(231,231,231,0.64);" id="auto">
+
+                                <?php
+                                if ($this->data != null) {
+                                    foreach ($this->data as $data) {
+                                        echo "<tr>";
+                                        echo "<td>" . $data['tanggal'] . "</td>";
+                                        echo "<td>" . $data['jam'] . "</td>";
+                                        echo "<td>" . $data['no_tiket'] . "</td>";
+                                        echo "<td>" . $data['aplikasi'] . "</td>";
+                                        echo "<td>" . $data['leader_programmer'] . "</td>";
+                                        echo "<td>" . $data['jenis_aplikasi'] . "</td>";
+                                        echo "<td>" . $data['keterangan'] . "</td>";
+                                        echo "</tr>";
+                                    }
+                                }
+
+                                ?>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- /.content -->

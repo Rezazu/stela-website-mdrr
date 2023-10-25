@@ -1,0 +1,84 @@
+<!-- Main content -->
+<section class="content ">
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="exampleModalLabel">Keterangan Revisi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="/operator/revisi">
+                        <div class="d-none">
+                            <div class="mb-3"><label class="form-label"><strong>ID</strong><br /></label><input id="id" name="id" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['id'] ?>" /></div>
+                        </div>
+                        <label class="form-label fw-normal">Keterangan</label>
+                        <textarea class="form-control" id="alamat" rows="4" placeholder="Keterangan Revisi" name="deskripsi_revisi"></textarea>
+                        <div class="d-flex align-items-end justify-content-end">
+                            <button class="btn text-white m-2" style="background-color: #34abbb;"><i class="fa-regular fa-square-check"></i> Kirim</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="container-fluid">
+            <h3 class="text-dark mb-4">Detail Permintaan</h3>
+            <div class="card shadow" style="border-bottom-right-radius: 15px;border-top-right-radius: 15px;border-top-left-radius: 15px;border-bottom-left-radius: 15px;">
+                <div class="card-header py-3" style="border-top-left-radius: 15px;border-top-right-radius: 15px;">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6 ">
+                            <p class="text-primary m-0 fw-bold">Detail Permintaan Aplikasi (<?= $this->data['status-revisi'] ?>)</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form method="get" action="/operator/permintaan/programmer/<?= $this->data['id'] ?>">
+                        <div class="col">
+                            <div class="d-none">
+                                <div class="mb-3"><label class="form-label"><strong>ID</strong><br /></label><input id="id" name="id" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['id'] ?>" /></div>
+                            </div>
+                            <div class="mb-3"><label class="form-label"><strong>Pelapor</strong><br /></label><input id="pelapor" name="pelapor" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['nama'] ?>" disabled /></div>
+                            <div class="mb-3"><label class="form-label"><strong>Email</strong><br /></label><input id="email" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['email'] ?>" disabled /></div>
+                            <div class="mb-3"><label class="form-label"><strong>Unit Kerja</strong><br /></label><input id="unit_kerja" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['unit_kerja'] ?>" disabled /></div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3"><label class="form-label"><strong>Nomor Telepon</strong></label><input id="no_telepon" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['no_telepon'] ?>" disabled /></div>
+                            <div class="mb-3"><label class="form-label"><strong>Dokumen Lampiran</strong><br /></label><br>
+                                <?php
+                                if ($this->data['dokumen']) {
+                                    foreach ($this->data['dokumen'] as $i) {
+                                        echo '<div><a target="_blank" href="' . "/storage/index/dokumen-lampiran/{$i['doc_name']}/ext/{$i['ext']}" . '"><i class="fa-regular fa-file fs-4 ms-2"></i></a></div>';
+                                    }
+                                }
+                                ?>
+                            </div>
+                            <div class="mb-3"><label class="form-label"><strong>Deskripsi Permintaan</strong><br /></label><textarea id="keterangan" class="form-control" rows="5" name="signature" style="border-radius: 15px;" disabled><?= $this->data['deskripsi_permintaan'] ?></textarea></div>
+                        </div>
+                        <div class="d-flex align-items-end justify-content-end">
+                            <a class='btn text-white m-2' type='button' style='background: #00838f;' href='/operator/permintaan'><i class="fa-solid fa-delete-left"></i> Batal</a>
+                            <? if ($this->data['status-revisi'] == 'Belum Ada Tindakan' || $this->data['status-revisi'] == 'Sudah Revisi') { ?>
+                                <a class='btn text-white m-2' type='button' style='background: #ff5050;' data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-rotate-right"></i> Revisi</a>
+                            <? }
+                            if ($this->data['status-revisi'] == 'Sudah Revisi' || $this->data['status-revisi'] == 'Belum Ada Tindakan') { ?>
+                                <button  class="btn text-white m-2" style="background-color: #34abbb;"><i class="fa-regular fa-square-check"></i> Kirim</button>
+                            <? } ?>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- /.content -->

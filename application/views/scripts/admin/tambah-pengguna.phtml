@@ -1,0 +1,197 @@
+<div class="card shadow mb-0" style="border-radius: 15px;">
+    <form class="needs-validation p-4" method="post" action="/admin/proses-tambah-pengguna" enctype="multipart/form-data" novalidate>
+        <h3 class="text-center fw-bold">Tambah Pengguna</h3>
+        <div class="row" methode="post">
+            <div class="col-md-4 col-sm-12">
+                <div class="mb-3">
+                    <label for="pelapor" class="form-label">Nama Lengkap</label>
+                    <input type="text" class="form-control" id="pelapor" value="<?= $this->data['nama_lengkap'] ?>" name="nama_lengkap" required>
+                    <div class="invalid-feedback">
+                        Bagian Ini Tidak Boleh Kosong!
+                    </div>
+                    <div class="valid-feedback">
+                        Baik!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" value="<?= $this->data['username'] ?>" name="username" required>
+                    <div class="invalid-feedback">
+                        Bagian Ini Tidak Boleh Kosong!
+                    </div>
+                    <div class="valid-feedback">
+                        Baik!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" value="<?= $this->data['email'] ?>" name="email" required>
+                    <div class="invalid-feedback">
+                        Bagian Ini Tidak Boleh Kosong!
+                    </div>
+                    <div class="valid-feedback">
+                        Baik!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" value="<?= $this->data['password'] ?>" name="password" required>
+                    <div class="invalid-feedback">
+                        Bagian Ini Tidak Boleh Kosong!
+                    </div>
+                    <div class="valid-feedback">
+                        Baik!
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 col-sm-12">
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="kd_departemen" class="form-label">Kode Departemen</label>
+                            <input type="text" class="form-control" id="kd_departemen" value="<?= $this->data['kd_departemen'] ?>" name="kd_departemen" required>
+                            <div class="invalid-feedback">
+                                Bagian Ini Tidak Boleh Kosong!
+                            </div>
+                            <div class="valid-feedback">
+                                Baik!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="bagian" class="form-label">Bagian</label>
+                            <input type="text" class="form-control" id="bagian" value="<?= $this->data['bagian'] ?>" name="bagian" required>
+                            <div class="invalid-feedback">
+                                Bagian Ini Tidak Boleh Kosong!
+                            </div>
+                            <div class="valid-feedback">
+                                Baik!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="gedung" class="form-label">Gedung</label>
+                            <input type="text" class="form-control" value="<?= $this->data['gedung'] ?>" id="gedung" name="gedung" required>
+                            <div class="invalid-feedback">
+                                Bagian Ini Tidak Boleh Kosong!
+                            </div>
+                            <div class="valid-feedback">
+                                Baik!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="lantai" class="form-label">Lantai</label>
+                            <input type="number" class="form-control" value="<?= $this->data['lantai'] ?>" id="lantai" name="lantai" required>
+                            <div class="invalid-feedback">
+                                Bagian Ini Tidak Boleh Kosong!
+                            </div>
+                            <div class="valid-feedback">
+                                Baik!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="ruangan" class="form-label">Ruangan</label>
+                            <input type="text" class="form-control" value="<?= $this->data['ruangan'] ?>" id="ruangan" name="ruangan" required>
+                            <div class="invalid-feedback">
+                                Bagian Ini Tidak Boleh Kosong!
+                            </div>
+                            <div class="valid-feedback">
+                                Baik!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="unit_kerja" class="form-label">Unit Kerja</label>
+                            <input type="text" class="form-control" value="<?= $this->data['unit_kerja'] ?>" id="unit_kerja" name="unit_kerja" required>
+                            <div class="invalid-feedback">
+                                Bagian Ini Tidak Boleh Kosong!
+                            </div>
+                            <div class="valid-feedback">
+                                Baik!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="telepon" class="form-label">Telephone</label>
+                            <input type="number" class="form-control" value="<?= $this->data['telepon'] ?>" id="telepon" name="telepon" required>
+                            <div class="invalid-feedback">
+                                Bagian Ini Tidak Boleh Kosong!
+                            </div>
+                            <div class="valid-feedback">
+                                Baik!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="hp" class="form-label">Hp</label>
+                            <input type="text" class="form-control" value="<?= $this->data['hp'] ?>" id="hp" name="hp" required>
+                            <div class="invalid-feedback">
+                                Bagian Ini Tidak Boleh Kosong!
+                            </div>
+                            <div class="valid-feedback">
+                                Baik!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="id_peran">Peran</label>
+                            <select class="required form-control select2" multiple="multiple" id="id_peran" name="peran[]" data-placeholder="Pilih Peran" style="width: 100%;">
+                                <option disabled> Pilih Peran...</option>
+                                <?php
+                                foreach ($this->list_peran as $data) {
+                                    echo '<option value="' . $data->id . '">' . $data->nama_peran . '</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="id_peran_programmer">Peran Programmer</label>
+                            <select class="required form-control select2" id="id_peran_programmer" name="programmer" data-placeholder="Pilih Peran Programmer" style="width: 100%;">
+                                <option disabled> Pilih Peran Programmer...</option>
+                                <?php
+                                foreach ($this->list_programmer as $key => $value) {
+                                    echo '<option value="' . $key . '">' . $value . '</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Foto Profile</label>
+                            <input class="form-control" type="file" id="profile" name="profile" required>
+                            <div class="invalid-feedback">
+                                Bagian Ini Tidak Boleh Kosong!
+                            </div>
+                            <div class="valid-feedback">
+                                Baik!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="w-100 d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary" style="background-color: #34abbb;">Tambah Pengguna</button>
+        </div>
+    </form>
+</div>

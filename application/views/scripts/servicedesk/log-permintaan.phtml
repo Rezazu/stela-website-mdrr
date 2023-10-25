@@ -1,0 +1,50 @@
+<div class="card shadow" style="border-bottom-right-radius: 15px;border-top-right-radius: 15px;border-top-left-radius: 15px;border-bottom-left-radius: 15px;">
+    <div class="card-header ">
+        <p class="text-primary m-0 fw-bold">Log Tiket</p>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive table" id="" role="" aria-describedby="dataTable_info" style="background: var(--bs-table-bg);border-radius: 10px;">
+            <table class="table table-striped" id="log">
+                <thead style="background: rgba(208,204,204,0.76);">
+                    <tr>
+                        <th>id</th>
+                        <th>Status Tiket Internal</th>
+                        <!-- <th>Status Tiket</th> -->
+                        <th>Waktu</th>
+                        <th style="width:65px">Tanggal </th>
+                        <th>Pengguna</th>
+                        <?php //if ($data['tahapan_programmer']) {
+                        echo  "<th>Tahapan Programmer</th>";
+                        //} 
+                        ?>
+                        <th>Keterangan</th>
+                        <th>Dokumen</th>
+                    </tr>
+                </thead>
+                <tbody style="background: rgba(231,231,231,0.64);" id="auto">
+                    <?php
+                    if ($this->data['list_log'] == null) {
+                    }
+                    if ($this->data['list_log'] != null) {
+                        foreach ($this->data['list_log'] as $data) {
+                            echo "<tr>";
+                            echo "<td>" . $data['id_log'] . "</td>";
+                            echo "<td>" . $data['status_tiket_internal'] . "</td>";
+                            //echo "<td>". $data['status_tiket'] ."</td>";
+                            echo "<td>" . $data['waktu'] . "</td>";
+                            echo "<td>" . $data['tanggal'] . "</td>";
+                            echo "<td>" . $data['petugas'] . "</td>";
+                            //if ($data['tahapan_programmer']) {
+                            echo "<td>" . (($data['tahapan_programmer']) ? $data['tahapan_programmer'] : "") . "</td>";
+                            //}
+                            echo "<td>" . $data['keteranagn'] . "</td>";
+                            echo "<td>" . (($data['dokumen']) ? "<a href='/storage/index/{$data['dokumen']['folder']}/{$data['dokumen']['doc_name']}/ext/{$data['dokumen']['ext']}'target='_blank'><i class='fa-regular fa-file' style='font-size: 40px;'></i></a>" : "") . "</td>";
+                            echo "</tr>";
+                        }
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

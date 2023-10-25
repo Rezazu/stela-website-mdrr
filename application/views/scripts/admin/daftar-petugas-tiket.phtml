@@ -1,0 +1,135 @@
+<div class="row">
+  <div class="col-lg-12 col-xxl-12">
+    <div class="card shadow " style="border-radius: 15px;">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-2 col-sm-6">
+            <div class="mb-3"><label class="form-label">Nama<br /></label><input id="email" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['nama'] ?>" disabled /></div>
+          </div>
+          <div class="col-md-2 col-sm-6">
+            <div class="mb-3"><label class="form-label">Peran<br /></label><input id="email" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['peran']['peran'] ? $this->data['peran']['peran'] : 'Admin' ?>" disabled /></div>
+          </div>
+          <div class="col-md-2 col-sm-6">
+            <div class="mb-3"><label class="form-label">Status Petugas<br /></label><input id="email" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['status'] ?>" disabled /></div>
+          </div>
+          <div class="col-md-2 col-sm-6">
+            <div class="mb-3"><label class="form-label">Jumlah Tiket<br /></label><input id="email" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['jumlah_tiket'] ?>" disabled /></div>
+          </div>
+          <div class="col-md-2 col-sm-6">
+            <div class="mb-3"><label class="form-label">Tiket dengan Rating <br /></label><input id="email" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['jumlah_tiket_nilai'] ?>" disabled /></div>
+          </div>
+          <div class="col-md-2 col-sm-6">
+            <div class="mb-3"><label class="form-label">Poin<br /></label><input id="email" class="form-control" type="text" style="border-radius: 10px;" value="<?= $this->data['jumlah_tiket_nilai'] * $this->data['rating'] ?>" disabled /></div>
+          </div>
+          <div class="col-md-2 col-sm-6">
+            <div class="mb-3"><label class="form-label">Rating<br /></label><br>
+              <span class="starss" data-rating="<?= $this->data['rating'] ?>" data-num-stars="5"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card shadow" style="border-bottom-right-radius: 15px;border-top-right-radius: 15px;border-top-left-radius: 15px;border-bottom-left-radius: 15px;">
+  <!-- <div class="card-header py-3">
+            <p class="text-primary m-0 fw-bold">Daftar Petugas</p>
+        </div> -->
+  <div class="card-body">
+    <div class="table-responsive table" id="" role="grid" aria-describedby="dataTable_info" style="background: var(--bs-table-bg);border-radius: 10px;">
+      <table id="petugas" class="table table-striped">
+        <thead style="background: rgba(208,204,204,0.76);">
+          <tr>
+            <th class="w-25">Tanggal</th>
+            <th>Id Tiket</th>
+            <th class="">No Tiket</th>
+            <th class="text-center">Rating</th>
+            <th class="text-center">Tindakan</th>
+          </tr>
+        </thead>
+        <tbody style="background: rgba(231,231,231,0.64);">
+          <?php
+          if ($this->data == null) {
+            # code...
+          } else {
+            foreach ($this->data['tiket'] as $tiket) {
+              echo "<tr>";
+              echo "<td>" . $tiket['tanggal'] . "</td>";
+              echo "<td>" . $tiket['id_tiket'] . "</td>";
+              echo "<td>" . $tiket['nomor_tiket'] . "</td>";
+              if ($tiket['rating'] == null) {
+                echo "<td></td>";
+                if ($tiket['id_status_tiket'] == 6) {
+                  echo "<td align='center'background: rgb(223,78,87);>";
+                  echo "<button class='btn btn-primary mx-2' type='button'data-toggle='modal' data-target='#modal-rating" . $tiket['nomor_tiket'] . "' id='button-rating' style='background-color:#34abbb'>Beri Nilai</button>";
+                  echo "</td>";
+                } else {
+                  echo "<td></td>";
+                }
+              }
+              if ($tiket['rating'] != null) {
+                echo "<td align='center'>" . "<span class='stars' data-rating='$tiket[rating]' data-num-stars='5' ></span>" . "<br/></td>";
+                echo "<td></td>";
+              }
+              echo "</tr>";
+            }
+          }
+          ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- MOdal rating  -->
+<? foreach ($this->data['tiket'] as $tikett) { ?>
+  <div class="modal fade" id="modal-rating<?= $tikett['nomor_tiket'] ?>">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Beri rating</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="post" action="/admin/beri-rating">
+            <input type="hidden" name="id_tiket" value="<?= $tikett['id_tiket'] ?>">
+            <input type="hidden" name="id_petugas" value="<?= $this->data['id'] ?>">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="d-md-flex justify-content-md-center align-items-md-center">
+                    <h5>Bagaimana Performa Pekerjaan Operator?</h5>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="d-md-flex justify-content-md-center align-items-md-center">
+                    <div class="rating">
+                      <input type="radio" id="5<?= $tikett['nomor_tiket'] ?>" name="rating" value="5" />
+                      <label class="" for="5<?= $tikett['nomor_tiket'] ?>" title="Awesome" aria-hidden="true"></label>
+                      <input type="radio" id="4<?= $tikett['nomor_tiket'] ?>" name="rating" value="4" />
+                      <label class="" for="4<?= $tikett['nomor_tiket'] ?>" title="Great" aria-hidden="true"></label>
+                      <input type="radio" id="3<?= $tikett['nomor_tiket'] ?>" name="rating" value="3" />
+                      <label class="" for="3<?= $tikett['nomor_tiket'] ?>" title="Very good" aria-hidden="true"></label>
+                      <input type="radio" id="2<?= $tikett['nomor_tiket'] ?>" name="rating" value="2" />
+                      <label class="" for="2<?= $tikett['nomor_tiket'] ?>" title="Good" aria-hidden="true"></label>
+                      <input type="radio" id="1<?= $tikett['nomor_tiket'] ?>" name="rating" value="1" />
+                      <label class="" for="1<?= $tikett['nomor_tiket'] ?>" title="Bad" aria-hidden="true"></label>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer" style="border:0px">
+          <button type="submit" class="btn btn-primary">Beri Nilai</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+<? } ?>
+
+<!-- End Modal rating -->

@@ -1,0 +1,41 @@
+
+    <div class="card shadow"  style="border-bottom-right-radius: 15px;border-top-right-radius: 15px;border-top-left-radius: 15px;border-bottom-left-radius: 15px;">
+        <!-- <div class="card-header py-3">
+            <p class="text-primary m-0 fw-bold">Daftar Petugas</p>
+        </div> -->
+        <div class="card-body">
+            <div class="table-responsive table" id="" role="grid" aria-describedby="dataTable_info" style="background: var(--bs-table-bg);border-radius: 10px;">
+                <table id="petugas" class="table table-striped">
+                    <thead style="background: rgba(208,204,204,0.76);">
+                        <tr>
+                            <th class="text-center">Id</th>
+                            <th class="text-center">No tiket</th>
+                            <th class="text-center">Start</th>
+                            <th class="text-center">Finish</th>
+                            <th class="text-center">Durasi</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody style="background: rgba(231,231,231,0.64);">    
+                            <?php  
+                            if ($this->data== null) {
+                              # code...
+                            }else{
+		                          foreach($this->data as $data)
+		                          { echo"<tr>";
+		                        echo "<td align='center'>". $data['id'] . "</td>";
+                                echo "<td align='center'>". $data['no_tiket'] . "</td>";
+                                echo "<td align='center'>". $data['tanggal_mulai'] . "</td>";
+                                echo "<td align='center'>". $data['tanggal_selesai'] . "</td>";
+                                echo "<td align='center'>". $data['lama_pengerjaan'] . "</td>";
+                                echo "</tr>";
+		                          }  }
+		                          ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+<?php 
+//var_dump($this->data)
+?>
