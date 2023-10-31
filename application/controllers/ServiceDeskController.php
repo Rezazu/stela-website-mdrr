@@ -50,8 +50,9 @@ class ServiceDeskController extends Zend_Controller_Action
             parent::__call($methodName, $args);
         } catch (Zend_Controller_Action_Exception $exception) {
             if ($exception->getCode() == 404) {
-                $this->renderScript('error/404.phtml');
-                $this->view->message = ["Page Not Found"];
+                // $this->renderScript('error/404.phtml');
+                // $this->view->message = ["Page Not Found"];
+                return "Bang saya gk nemu halamannya";
             } elseif ($exception->getCode() == 500) {
                 $this->renderScript('error/500.phtml');
                 $this->view->message = "Server Error";
